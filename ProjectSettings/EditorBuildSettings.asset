@@ -4,5 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Mariam Folder/TestScenes/Demo Menu.unity
+    guid: 795b74f99d0eb4e499da3e1373467536
+  - enabled: 1
+    path: Assets/Mariam Folder/TestScenes/Demo.unity
+    guid: ea42e4e06f958224cae8ced487a25cc5
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8fba76645f6c6f34da464f1a9340ea57,
+      type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: 90ffa0a28ea6a0249a6ddba9f164b90e, type: 2}
