@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mariam Folder/TestScenes/Demo.unity
     guid: ea42e4e06f958224cae8ced487a25cc5
+  - enabled: 1
+    path: Assets/Jane/JaneDemo.unity
+    guid: af68ad4328c33df4fa9628e823d3b682
+  - enabled: 1
+    path: Assets/Jane/JaneGameWinDemo.unity
+    guid: 9128ed2093f56ba4b85b6c96439bd8c5
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8fba76645f6c6f34da464f1a9340ea57,
       type: 2}
