@@ -6,25 +6,25 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mingkun Folder/Scenes/MainMenu.unity
+    path: Assets/[Demo]/Mingkun Folder/Scenes/MainMenu.unity
     guid: 27eea755a1bdba748a2978c0778948ec
   - enabled: 1
-    path: Assets/Mingkun Folder/Scenes/Option.unity
+    path: Assets/[Demo]/Mingkun Folder/Scenes/Option.unity
     guid: 1e9425eb3ddb09e45b24cb4da1fe5906
   - enabled: 1
-    path: Assets/Mariam Folder/TestScenes/Demo Menu.unity
+    path: Assets/[Demo]/Mariam Folder/TestScenes/Demo Menu.unity
     guid: 795b74f99d0eb4e499da3e1373467536
   - enabled: 1
-    path: Assets/Mariam Folder/TestScenes/Demo.unity
+    path: Assets/[Demo]/Mariam Folder/TestScenes/Demo.unity
     guid: ea42e4e06f958224cae8ced487a25cc5
   - enabled: 1
-    path: Assets/Jane/JaneDemo.unity
+    path: Assets/[Demo]/Jane/JaneDemo.unity
     guid: af68ad4328c33df4fa9628e823d3b682
   - enabled: 1
-    path: Assets/Jane/JaneGameWinDemo.unity
+    path: Assets/[Demo]/Jane/JaneGameWinDemo.unity
     guid: 9128ed2093f56ba4b85b6c96439bd8c5
   - enabled: 1
-    path: Assets/Mingkun Folder/Scenes/GameOver.unity
+    path: Assets/[Demo]/Mingkun Folder/Scenes/GameOver.unity
     guid: a7f69eaf127b9934fbc67bda0f9fd717
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8fba76645f6c6f34da464f1a9340ea57,
