@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/[Demo]/Mingkun Folder/Scenes/GameOver.unity
     guid: a7f69eaf127b9934fbc67bda0f9fd717
+  - enabled: 1
+    path: Assets/[Demo]/Mark/Scenes/GameOverScene.unity
+    guid: 290d557b6f8efbb488ab1d93567bd27f
+  - enabled: 1
+    path: Assets/[Demo]/Mark/Scenes/MainMenuScene.unity
+    guid: 2d03c9ab197b5c74db2f043800c6237b
+  - enabled: 1
+    path: Assets/[Demo]/Mark/Scenes/OptionScene.unity
+    guid: 358423dc289cacf42b0daa1cb6266a2e
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8fba76645f6c6f34da464f1a9340ea57,
       type: 2}
