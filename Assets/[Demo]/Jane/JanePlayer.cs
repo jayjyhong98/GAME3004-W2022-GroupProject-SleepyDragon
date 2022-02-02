@@ -38,7 +38,7 @@ public class JanePlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
-            //transform.SetParent(other.transform);
+            transform.SetParent(collision.transform);
         }
 
         if (collision.gameObject.CompareTag("Spike"))
@@ -49,6 +49,11 @@ public class JanePlayer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //if (other.gameObject.CompareTag("Platform"))
+        //{
+        //    transform.SetParent(other.transform);
+        //}
+
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("Hit Finish");
@@ -67,7 +72,15 @@ public class JanePlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Platform"))
         {
-            //transform.SetParent(null);
+            transform.SetParent(null);
         }
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Platform"))
+    //    {
+    //        transform.SetParent(null);
+    //    }
+    //}
 }
