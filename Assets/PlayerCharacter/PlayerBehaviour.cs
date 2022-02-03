@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayerMask;
     private bool isGrounded = false;
+    private Vector3 jumpVelocity = Vector3.zero;
 
     // Player Input References
     Vector2 moveVector = Vector2.zero;
@@ -30,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
     GameObject followTarget = null;
     Animator playerAnimator = null;
     Rigidbody rigidbody = null;
+    CharacterController characterController = null;
 
     public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
 
@@ -39,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
         followTarget = GameObject.Find("FollowTarget");
         playerAnimator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
     }
 
 
@@ -54,15 +57,20 @@ public class PlayerBehaviour : MonoBehaviour
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
 
-        // Restrict moviment when jumping
-        //if (!isGrounded) return;
+        if (isGrounded && jumpVelocity.y < 0.0f)
+        {
+            jumpVelocity.y = -2.0f;
+        }
 
         // Move the player based on Vector2 values received from PlayerActionMap
         if (!(moveVector.magnitude > 0)) moveDirection = Vector3.zero;
         moveDirection = new Vector3(moveVector.x ,0.0f, moveVector.y);
-        if(!isGrounded) moveDirection /= 2;
         Vector3 movementDirection = moveDirection * (movementSpeed * Time.deltaTime);
-        transform.position += movementDirection;
+        characterController.Move(movementDirection);
+
+        // Apply Jump
+        jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
+        characterController.Move(jumpVelocity * Time.deltaTime);
 
         // Rotate the player to face direction of movement
         if (moveVector != Vector2.zero) {
@@ -94,9 +102,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!isGrounded) return; // Restrict  to single jump
 
-        isGrounded = false;
-        // Apply jump force
-        rigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        // Set jump velocity
+        jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
 
         // TODO ADD JUMP ANIMATION
     }
