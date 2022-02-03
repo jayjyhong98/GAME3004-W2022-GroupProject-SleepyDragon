@@ -34,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     CharacterController characterController = null;
 
     public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+    public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
 
 
     void Start()
@@ -106,6 +107,11 @@ public class PlayerBehaviour : MonoBehaviour
         jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
 
         // TODO ADD JUMP ANIMATION
+    }
+
+    public void OnSwordAttack(InputValue value)
+    {
+        playerAnimator.SetTrigger(SwordAttackHash);
     }
 
     void OnDrawGizmos()
