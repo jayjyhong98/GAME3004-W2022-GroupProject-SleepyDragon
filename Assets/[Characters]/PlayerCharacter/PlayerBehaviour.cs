@@ -71,9 +71,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Rotate the player to face direction of movement
         if (moveVector != Vector2.zero) {
-            float targetAngle = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg;
-            Quaternion rot = Quaternion.Euler(0.0f, targetAngle, 0.0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerRotationSpeed);
+            transform.LookAt(moveDirection + transform.position);
         }
     }
 
