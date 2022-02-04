@@ -81,14 +81,20 @@ public class EnemyBehaviour : MonoBehaviour
                 // Chase player
                 agent.SetDestination(target.position);
 
-                // Rotate to face the target
-                Vector3 lookAtPosition = new Vector3(target.position.x, 0.0f, target.position.z);
-                transform.LookAt(lookAtPosition);
+                RotateToTarget();
                 break;
 
             case EnemyState.ATTACK:
+                RotateToTarget();
                 break;
         }
+    }
+
+    private void RotateToTarget()
+    {
+        // Rotate to face the target
+        Vector3 lookAtPosition = new Vector3(target.position.x, 0.0f, target.position.z);
+        transform.LookAt(lookAtPosition);
     }
 
     private void OnDrawGizmosSelected()
