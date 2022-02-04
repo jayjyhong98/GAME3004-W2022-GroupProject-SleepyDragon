@@ -3,23 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
+public enum EnemyState
+{
+    IDLE,
+    ROAM,
+    CHASE,
+    ATTACK
+}
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Header("PawnSensing")]
     private float detectionRadius = 7.0f;
+    [SerializeField]
+    private float attackRadius = 2.0f;
     private float rotationSpeed = 100;
 
-    private Rigidbody rigidbody = null;
+    private EnemyState state = EnemyState.IDLE;
 
+    private Rigidbody rigidbody = null;
+    private Animator animator = null;
+
+    // AI
     Transform target;
     NavMeshAgent agent;
+
+    public readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+    public readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get components
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -27,16 +44,51 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if can see target, if so change state to chase
         float distance = Vector3.Distance(target.position, transform.position);
-
         if (distance <= detectionRadius)
         {
-            agent.SetDestination(target.position);
+            state = EnemyState.CHASE;
+
+            // If target is within attack range, change to attack state
+            if (distance <= attackRadius)
+            {
+                state = EnemyState.ATTACK;
+                animator.SetBool(IsAttackingHash, true);
+            }
+            else
+            {
+                animator.SetBool(IsMovingHash, true);
+                animator.SetBool(IsAttackingHash, false);
+            }
+            
+        }
+        else
+        {
+            state = EnemyState.IDLE;
+            animator.SetBool(IsMovingHash, false);
         }
 
-        // Rotate the player (TODO IF CHASING)
-        Vector3 lookAtPosition = new Vector3(target.position.x, 0.0f, target.position.z); 
-        transform.LookAt(lookAtPosition);
+        switch (state)
+        {
+            case EnemyState.IDLE:
+                break;
+
+            case EnemyState.ROAM:
+                break;
+
+            case EnemyState.CHASE:
+                // Chase player
+                agent.SetDestination(target.position);
+
+                // Rotate to face the target
+                Vector3 lookAtPosition = new Vector3(target.position.x, 0.0f, target.position.z);
+                transform.LookAt(lookAtPosition);
+                break;
+
+            case EnemyState.ATTACK:
+                break;
+        }
     }
 
     private void OnDrawGizmosSelected()

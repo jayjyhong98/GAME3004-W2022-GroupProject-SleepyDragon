@@ -28,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 lookVector = Vector2.zero;
 
     // Components
-    Animator playerAnimator = null;
+    Animator animator = null;
     CharacterController characterController = null;
 
     public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
@@ -37,7 +37,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        playerAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
     }
 
@@ -83,9 +83,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Update movement animation
         if (moveVector != Vector2.zero)
-            playerAnimator.SetBool(IsRunningHash, true);
+            animator.SetBool(IsRunningHash, true);
         else
-            playerAnimator.SetBool(IsRunningHash, false);
+            animator.SetBool(IsRunningHash, false);
     }
 
     public void OnLook(InputValue value)
@@ -105,7 +105,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnSwordAttack(InputValue value)
     {
-        playerAnimator.SetTrigger(SwordAttackHash);
+        animator.SetTrigger(SwordAttackHash);
     }
 
     void OnDrawGizmos()

@@ -1367,9 +1367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14011fcb7ec487499481b605ae41a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 7
-  cameraRotationSensitivity: 100
+  movementSpeed: 8
+  jumpForce: 2
+  playerRotationSpeed: 10
   groundCheck: {fileID: 6103943816788900484}
   groundLayerMask:
     serializedVersion: 2
@@ -2529,7 +2529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4824639038307203780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.241, z: 0}
+  m_LocalPosition: {x: 0, y: 0.164, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
