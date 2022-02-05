@@ -18,7 +18,7 @@ public class BouncePlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bounce = 40.0f;
+        bounce = 10.0f;
     }
 
     // Update is called once per frame
