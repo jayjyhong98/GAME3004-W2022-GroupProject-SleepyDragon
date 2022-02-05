@@ -8,29 +8,38 @@ public class DeathPlaneController : MonoBehaviour
 
     private void Start()
     {
-        spawnController = GameObject.FindObjectOfType<SpawnController>();
+        //spawnController = GameObject.FindObjectOfType<SpawnController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Hit Death Plane");
+        //if (other.gameObject.CompareTag("Player"))
+        //{
+            //Debug.Log("Hit Death Plane");
             // Spawn player to currentSpawnPoint
-            other.transform.position = spawnController.currentSpawnPoint.position;
+            //other.transform.position = spawnController.currentSpawnPoint.position;
 
-            JanePlayer player = other.GetComponent<JanePlayer>();
+            //Debug.Log(other.transform.position);
 
-            --player.Health;
+            //PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
 
-            if (player.Health == 0)
+            if (other.gameObject.tag == "Player")
             {
-                //Death
+                Debug.Log("Hit Death Plane");
+                // Spawn player to currentSpawnPoint
+                other.transform.position = spawnController.currentSpawnPoint.position;
             }
-        }
-        else
-        {
+
+            //--player.Health;
+
+            //if (player.Health == 0)
+            //{
+            //    //Death
+            //}
+        //}
+        //else
+        //{
             //other.gameObject.SetActive(false);
-        }
+        //}
     }
 }

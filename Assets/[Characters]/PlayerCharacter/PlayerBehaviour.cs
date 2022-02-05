@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class PlayerBehaviour : MonoBehaviour
     private float movementSpeed = 8;
     [SerializeField]
     private float jumpForce = 7;
-    [SerializeField]
+    //[SerializeField]
     //private float cameraRotationSensitivity = 30;
-    private float playerRotationSpeed = 10;
+    //private float playerRotationSpeed = 10;
 
     // Player Jump
     [SerializeField, Header("Ground Detection")]
@@ -19,11 +20,11 @@ public class PlayerBehaviour : MonoBehaviour
     private float groundRadius = 0.3f;
     [SerializeField]
     private LayerMask groundLayerMask;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     private Vector3 jumpVelocity = Vector3.zero;
 
     // Player Input References
-    Vector2 moveVector = Vector2.zero;
+    Vector2 moveVector = Vector3.zero;
     Vector3 moveDirection = Vector3.zero;
     Vector2 lookVector = Vector2.zero;
 
@@ -34,11 +35,15 @@ public class PlayerBehaviour : MonoBehaviour
     public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
 
+    //[Header("CheckPoint")]
+    //public Vector3 StartPos;
+
 
     void Start()
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        //StartPos = transform.position;
     }
 
 
@@ -112,5 +117,40 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+    }
+
+    // Check Collision
+    private void OnCollisionEnter(Collision collision)
+    {
+        // The player can get onto the platform
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            Debug.Log("Hit Enter");
+            transform.SetParent(collision.transform);
+        }
+    }
+
+    // Check Trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("Hit Finish");
+            SceneManager.LoadScene("GameOverScene");
+        }
+
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            Debug.Log("Hit Spike");
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        // The player is no longer afftected by platform's transform.
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            transform.SetParent(null);
+        }
     }
 }
