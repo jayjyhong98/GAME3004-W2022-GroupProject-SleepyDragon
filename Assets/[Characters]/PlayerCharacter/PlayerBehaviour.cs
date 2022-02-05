@@ -34,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 TargetPrevPos = Vector3.zero;
 
     // Player Input References
-    Vector2 moveVector = Vector3.zero;
+    Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
     Vector2 lookVector = Vector2.zero;
 
@@ -46,6 +46,7 @@ public class PlayerBehaviour : MonoBehaviour
     public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
 
     //public Transform player;
+    public Vector3 OriginScale;
 
     //[Header("CheckPoint")]
     //public Vector3 StartPos;
@@ -55,6 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        OriginScale = transform.localScale;
         //characterController = GetComponent<CharacterController>();
         //characterController.detectCollisions
         //StartPos = transform.position;
@@ -107,11 +109,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.parent != null)
         {
             transform.localScale = new Vector3(
-                transform.localScale.x / transform.parent.localScale.x,
-                transform.localScale.y / transform.parent.localScale.y,
-                transform.localScale.z / transform.parent.localScale.z);
-        }
+                OriginScale.x / transform.parent.localScale.x,
+                OriginScale.y / transform.parent.localScale.y,
+                OriginScale.z / transform.parent.localScale.z);
 
+            Debug.Log(OriginScale.x / transform.parent.localScale.x);
+        }
         else
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -188,11 +191,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             Debug.Log("Hit Enter");
-            Target = collision.transform;
-            TargetPrevPos = Target.position;
+            //Target = collision.transform;
+            //TargetPrevPos = Target.position;
             transform.SetParent(collision.transform);
-            //transform.position = collision.transform.position;
-            //transform.parent = collision.transform;
+
         }
     }
 
