@@ -1,3 +1,12 @@
+//*********************************************************************************************************
+// Author: Jeongyeon Jane Hong
+//
+// Last Modified: February 5, 2022
+//  
+// Description: This script is used to implement Spinning Platform Direction.
+//
+//******************************************************************************************************
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

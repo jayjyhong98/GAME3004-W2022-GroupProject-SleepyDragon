@@ -1,3 +1,11 @@
+//*********************************************************************************************************
+// Author: Jeongyeon Jane Hong
+//
+// Last Modified: February 5, 2022
+//  
+// Description: This script is used to implement Spinning Platform.
+//
+//******************************************************************************************************
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,16 +54,16 @@ public class MovingPlatform : MonoBehaviour
         switch (direction)
         {
             case MovingPlatformDirection.HORIZONTAL:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, transform.position.y);
+                transform.position = new Vector3(startingPosition.x + pingPongValue, transform.position.y, transform.position.z);
                 break;
             case MovingPlatformDirection.VERTICAL:
-                transform.position = new Vector2(transform.position.x, startingPosition.y + pingPongValue);
+                transform.position = new Vector3(transform.position.x, startingPosition.y + pingPongValue, transform.position.z);
                 break;
             case MovingPlatformDirection.DIAGONAL_UP:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
+                transform.position = new Vector3(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue, transform.position.z);
                 break;
             case MovingPlatformDirection.DIAGONAL_DOWN:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y - pingPongValue);
+                transform.position = new Vector3(startingPosition.x + pingPongValue, startingPosition.y - pingPongValue, transform.position.z);
                 break;
         }
     }

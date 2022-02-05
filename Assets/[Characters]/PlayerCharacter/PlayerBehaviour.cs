@@ -1,3 +1,11 @@
+//*********************************************************************************************************
+// Author: Pauleen Lam
+//
+// Last Modified: February 5, 2022
+//  
+// Description: This script is used to implement Player.
+//
+//******************************************************************************************************
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
