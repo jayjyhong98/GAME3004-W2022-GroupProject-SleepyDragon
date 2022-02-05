@@ -1,5 +1,5 @@
 //*********************************************************************************************************
-// Author: Pauleen Lam
+// Author: Pauleen Lam, Jeongyeon Jane Hong
 //
 // Last Modified: February 5, 2022
 //  
@@ -30,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
     private LayerMask groundLayerMask;
     public bool isGrounded = false;
     private Vector3 jumpVelocity = Vector3.zero;
+    private Transform Target = null;
+    private Vector3 TargetPrevPos = Vector3.zero;
 
     // Player Input References
     Vector2 moveVector = Vector3.zero;
@@ -43,6 +45,8 @@ public class PlayerBehaviour : MonoBehaviour
     public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
     public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
 
+    //public Transform player;
+
     //[Header("CheckPoint")]
     //public Vector3 StartPos;
 
@@ -50,7 +54,9 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        //characterController = GetComponent<CharacterController>();
+        //characterController.detectCollisions
         //StartPos = transform.position;
     }
 
@@ -72,20 +78,66 @@ public class PlayerBehaviour : MonoBehaviour
             jumpVelocity.y = -2.0f;
         }
 
+        //jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
+
         // Move the player based on Vector2 values received from PlayerActionMap
-        if (!(moveVector.magnitude > 0)) moveDirection = Vector3.zero;
-        moveDirection = new Vector3(moveVector.x ,0.0f, moveVector.y);
-        Vector3 movementDirection = moveDirection * (movementSpeed * Time.deltaTime);
-        characterController.Move(movementDirection);
+        if (!(moveVector.magnitude > 0)) 
+            moveDirection = Vector3.zero;
 
-        // Apply Jump
-        jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
-        characterController.Move(jumpVelocity * Time.deltaTime);
+        moveDirection = new Vector3(moveVector.x , 0.0f, moveVector.y);
 
-        // Rotate the player to face direction of movement
-        if (moveVector != Vector2.zero) {
+        if (moveVector != Vector2.zero)
+        {
             transform.LookAt(moveDirection + transform.position);
         }
+
+        //if (Target)
+        //{
+        //    if (TargetPrevPos != Target.position)
+        //    {
+        //        moveDirection += (Target.position - TargetPrevPos);
+        //        TargetPrevPos = Target.position;
+        //        Debug.Log("Move");
+        //    }
+        //}
+
+        transform.position += moveDirection * movementSpeed * Time.deltaTime;
+        //transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        if (transform.parent != null)
+        {
+            transform.localScale = new Vector3(
+                transform.localScale.x / transform.parent.localScale.x,
+                transform.localScale.y / transform.parent.localScale.y,
+                transform.localScale.z / transform.parent.localScale.z);
+        }
+
+        else
+        {
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+
+        //if (Target)
+        //{
+        //    if (TargetPrevPos != Target.position)
+        //    {
+        //        moveDirection += (Target.position - TargetPrevPos);
+        //        TargetPrevPos = Target.position;
+        //        Debug.Log("Move");
+        //    }
+        //}
+
+        //Vector3 movementDirection = moveDirection * (movementSpeed * Time.deltaTime);
+        //characterController.Move(movementDirection);
+
+        //// Apply Jump
+        //jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
+        //characterController.Move(jumpVelocity * Time.deltaTime);
+
+        //// Rotate the player to face direction of movement
+        //if (moveVector != Vector2.zero) {
+        //    transform.LookAt(moveDirection + transform.position);
+        //}
     }
 
 
@@ -110,8 +162,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!isGrounded) return; // Restrict  to single jump
 
+        Debug.Log("Jump");
         // Set jump velocity
-        jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+        //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
 
         // TODO ADD JUMP ANIMATION
     }
@@ -134,7 +188,11 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             Debug.Log("Hit Enter");
+            Target = collision.transform;
+            TargetPrevPos = Target.position;
             transform.SetParent(collision.transform);
+            //transform.position = collision.transform.position;
+            //transform.parent = collision.transform;
         }
     }
 
@@ -158,6 +216,7 @@ public class PlayerBehaviour : MonoBehaviour
         // The player is no longer afftected by platform's transform.
         if (other.gameObject.CompareTag("Platform"))
         {
+            Target = null;
             transform.SetParent(null);
         }
     }
