@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1529432959887051313}
   - component: {fileID: 8542984558307727813}
   - component: {fileID: 1094521606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BouncePlatform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198710522841330930}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebb7308e26fbb0489acef29350c277d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 30
+  bounce: 40

@@ -20,6 +20,6 @@ public class PauseScreen : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Demo Menu");
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
