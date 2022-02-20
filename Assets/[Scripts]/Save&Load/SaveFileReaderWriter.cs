@@ -44,10 +44,10 @@ public static class SaveFileReaderWriter
     //TODO Remove; move functionality to a more dynamic class
     public static string[] CheckAvailableSaveFiles(string _saveFileDirectory, string _saveFileName)
     {
-        string[] saveFileNames = new string[4]; //This game will have a maximum 4 save slots hardcoded.
+        string[] saveFileNames = new string[5]; //This game will have a maximum 4 save slots hardcoded.
         BinaryFormatter formatter = new BinaryFormatter();
 
-        for (int index = 0; index < 4; index++)
+        for (int index = 0; index < 5; index++)
         {
             if (File.Exists(_saveFileDirectory + "/" + _saveFileName + (index + 1).ToString() + ".pawsave"))
             {
