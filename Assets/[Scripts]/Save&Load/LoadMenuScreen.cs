@@ -1,7 +1,7 @@
 //**************************************************************************************************************************************************************************************************************************************
 // Author: Mariam Ogunlesi
 //
-// Last Modified: January 29, 2022
+// Last Modified: feburary 19, 2022
 //  
 // Description: This Loads the Menu screen with the option to choose which level to reload
 //  
@@ -24,6 +24,7 @@ public class LoadMenuScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI saveSlot2;
     [SerializeField] private TextMeshProUGUI saveSlot3;
     [SerializeField] private TextMeshProUGUI saveSlot4;
+    [SerializeField] private TextMeshProUGUI saveSlot5;
 
     [Header("Name")]
     [SerializeField] private string savefileName = "Pawggers";       //Pawggers is the name of the save file. An indexing number will be appended to this name. This is different from the save file header seen in-game.
@@ -38,7 +39,7 @@ public class LoadMenuScreen : MonoBehaviour
     private string GetSaveSlotHeader(int _saveSlotIndex)
     {
 
-        if (_saveSlotIndex < 1 || _saveSlotIndex > 4)
+        if (_saveSlotIndex < 1 || _saveSlotIndex > 5)
         { 
             //This game will have a maximum 4 or more save slots .
             Debug.LogError("[Error] Invalid save slot index! Slot number must be between from 1 to 4 or 10.");
@@ -73,25 +74,27 @@ public class LoadMenuScreen : MonoBehaviour
         saveSlot2.text = GetSaveSlotHeader(2);
         saveSlot3.text = GetSaveSlotHeader(3);
         saveSlot4.text = GetSaveSlotHeader(4);
+        saveSlot5.text = GetSaveSlotHeader(5);
+
     }
 
     //Loads save file data at given save slot index
     private bool LoadSaveFile(int saveSlotIndex)
     {
         //This game will have a maximum 4 or more save slots .
-        if (saveSlotIndex <= 0 || saveSlotIndex > 4)
+        if (saveSlotIndex <= 0 || saveSlotIndex > 5)
         {
-            Debug.LogError("[Error] Invalid save slot index! Slot number must be between from 1 to 4.");
+            Debug.LogError("[Error] Invalid save slot index! Slot number must be between from 1 to 5.");
             return false;
         }
 
-        if (!File.Exists(Application.persistentDataPath + "/" + savefileName + saveSlotIndex + ".hamsave"))
+        if (!File.Exists(Application.persistentDataPath + "/" + savefileName + saveSlotIndex + ".pawsave"))
         {
             Debug.LogError("[Error] File does not exist; Cannot load a save file that does not exist.");
             return false;
         }
 
-        SaveData readSaveData = SaveFileReaderWriter.ReadFromSaveFile(Application.persistentDataPath + "/" + savefileName + saveSlotIndex + ".hamsave");
+        SaveData readSaveData = SaveFileReaderWriter.ReadFromSaveFile(Application.persistentDataPath + "/" + savefileName + saveSlotIndex + ".pawsave");
 
         if (this.gameVersion != readSaveData.gameVersion)
         {
@@ -134,15 +137,15 @@ public class LoadMenuScreen : MonoBehaviour
     public void OnClickSaveSlot(int slotIndex)
     {
 
-        if (slotIndex < 1 || slotIndex > 4)
+        if (slotIndex < 1 || slotIndex > 5)
         { //This game will have a maximum 4 save slots hardcoded.
-            Debug.LogError("[Error] Invalid save slot index! Slot number must be between from 1 to 4.");
+            Debug.LogError("[Error] Invalid save slot index! Slot number must be between from 1 to 5.");
             return;
         }
 
-        if (saveFileDisplayHeaders.Length != 4)
+        if (saveFileDisplayHeaders.Length != 5)
         {
-            Debug.LogError("[Error] saveFileDisplayHeaders[_slotIndex].Length is not 4. Length is: " + saveFileDisplayHeaders[slotIndex].Length);
+            Debug.LogError("[Error] saveFileDisplayHeaders[_slotIndex].Length is not 5. Length is: " + saveFileDisplayHeaders[slotIndex].Length);
             return;
         }
 
