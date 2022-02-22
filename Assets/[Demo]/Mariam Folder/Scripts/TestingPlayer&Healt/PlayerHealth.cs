@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
   
-        public void AddHealth(int _amount)
+    public void AddHealth(int _amount)
     { //add amount of health from inventory screen when seed button is pressed
         if (currentHealth < maxhealth)
         {  //check if health is under max health
@@ -81,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = _amount;
         }
         healthBar.SetHealth(currentHealth);
+        
     }
 
     //Briefly disables character collision at game start. This is to prevent errors when player decides to load a game where the player character is already colliding with an enemy.

@@ -50,6 +50,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     //[Header("CheckPoint")]
     //public Vector3 StartPos;
+    PlayerHealth playerHealth;
 
 
     void Start()
@@ -57,6 +58,7 @@ public class PlayerBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         OriginScale = transform.localScale;
+        playerHealth = GetComponent<PlayerHealth>();
         //characterController = GetComponent<CharacterController>();
         //characterController.detectCollisions
         //StartPos = transform.position;
@@ -196,6 +198,11 @@ public class PlayerBehaviour : MonoBehaviour
             transform.SetParent(collision.transform);
 
         }
+        if (collision.gameObject.CompareTag("TurtleShell"))
+        {
+            Debug.Log("TurtleShell collision");
+            playerHealth.TakeDamage(5);
+        }
     }
 
     // Check Trigger
@@ -210,7 +217,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Spike"))
         {
             Debug.Log("Hit Spike");
+            // ? playerHealth.TakeDamage(1);
         }
+        
     }
 
     private void OnCollisionExit(Collision other)

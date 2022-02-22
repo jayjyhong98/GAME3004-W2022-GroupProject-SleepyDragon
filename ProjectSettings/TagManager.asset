@@ -9,6 +9,8 @@ TagManager:
   - Platform
   - Spike
   - Audio
+  - Slime
+  - TurtleShell
   layers:
   - Default
   - TransparentFX
