@@ -19,7 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private float jumpForce = 7;
     //[SerializeField]
-    //private float cameraRotationSensitivity = 30;
+    private float cameraRotationSensitivity = 30;
     //private float playerRotationSpeed = 10;
 
     // Player Jump
@@ -40,21 +40,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     // Components
     Animator animator = null;
-    CharacterController characterController = null;
-
-    public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
-    public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
+    PlayerHealth playerHealth;
+    public GameObject followTarget;
 
     //public Transform player;
     public Vector3 OriginScale;
 
     //[Header("CheckPoint")]
     //public Vector3 StartPos;
-    PlayerHealth playerHealth;
 
     //Sound Manager
     [SerializeField]
     public SoundManagerScript soundManager;
+
+    // Animation Hashes
+    public readonly int IsRunningHash = Animator.StringToHash("IsRunning");
+    public readonly int SwordAttackHash = Animator.StringToHash("SwordAttack");
 
     void Start()
     {
@@ -71,11 +72,11 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        //followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        //followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        //var angle = followTarget.transform.localEulerAngles;
-        //angle.z = 0;
-        //followTarget.transform.localEulerAngles = angle;
+        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        var angle = followTarget.transform.localEulerAngles;
+        angle.z = 0;
+        followTarget.transform.localEulerAngles = angle;
 
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);

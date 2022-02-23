@@ -27,6 +27,9 @@ public class EnemyBehaviour : MonoBehaviour
     private float attackRadius = 2.0f;
     private float rotationSpeed = 100;
 
+    [SerializeField]
+    private int health = 3;
+
     private EnemyState state = EnemyState.IDLE;
 
     private Rigidbody rigidbody = null;
@@ -103,6 +106,16 @@ public class EnemyBehaviour : MonoBehaviour
         // Rotate to face the target
         Vector3 lookAtPosition = new Vector3(target.position.x, 0.0f, target.position.z);
         transform.LookAt(lookAtPosition);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Enemy is taking damage");
+        health -= damage;
+        if (health <= 0)
+        {
+            enabled = false;
+        }
     }
 
     private void OnDrawGizmosSelected()

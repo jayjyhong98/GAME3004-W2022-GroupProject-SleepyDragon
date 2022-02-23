@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 540251640}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 7
   attackRadius: 2
+  health: 3
 --- !u!114 &540251640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +452,7 @@ GameObject:
   - component: {fileID: 2104851703}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

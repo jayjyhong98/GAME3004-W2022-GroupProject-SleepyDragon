@@ -12,6 +12,8 @@ TagManager:
   - Slime
   - TurtleShell
   - Water
+  - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
