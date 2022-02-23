@@ -58,15 +58,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         OriginScale = transform.localScale;
-        playerHealth = GetComponent<PlayerHealth>();
-        //characterController = GetComponent<CharacterController>();
-        //characterController.detectCollisions
-        //StartPos = transform.position;
 
-        //Get soundmanager
+        // Component references
+        animator = GetComponent<Animator>();
+        playerHealth = GetComponent<PlayerHealth>();
         soundManager = FindObjectOfType<SoundManagerScript>();
     }
 
@@ -88,8 +85,6 @@ public class PlayerBehaviour : MonoBehaviour
             jumpVelocity.y = -2.0f;
         }
 
-        //jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
-
         // Move the player based on Vector2 values received from PlayerActionMap
         if (!(moveVector.magnitude > 0)) 
             moveDirection = Vector3.zero;
@@ -101,18 +96,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.LookAt(moveDirection + transform.position);
         }
 
-        //if (Target)
-        //{
-        //    if (TargetPrevPos != Target.position)
-        //    {
-        //        moveDirection += (Target.position - TargetPrevPos);
-        //        TargetPrevPos = Target.position;
-        //        Debug.Log("Move");
-        //    }
-        //}
-
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
-        //transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
         if (transform.parent != null)
         {
@@ -127,28 +111,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
-
-        //if (Target)
-        //{
-        //    if (TargetPrevPos != Target.position)
-        //    {
-        //        moveDirection += (Target.position - TargetPrevPos);
-        //        TargetPrevPos = Target.position;
-        //        Debug.Log("Move");
-        //    }
-        //}
-
-        //Vector3 movementDirection = moveDirection * (movementSpeed * Time.deltaTime);
-        //characterController.Move(movementDirection);
-
-        //// Apply Jump
-        //jumpVelocity.y += Physics.gravity.y * Time.deltaTime;
-        //characterController.Move(jumpVelocity * Time.deltaTime);
-
-        //// Rotate the player to face direction of movement
-        //if (moveVector != Vector2.zero) {
-        //    transform.LookAt(moveDirection + transform.position);
-        //}
     }
 
 
@@ -175,6 +137,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookVector = value.Get<Vector2>();
+        Debug.Log(lookVector);
     }
 
     public void OnJump(InputValue value)
@@ -231,21 +194,12 @@ public class PlayerBehaviour : MonoBehaviour
     // Check Trigger
     private void OnTriggerEnter(Collider other)
     {
+        // Goal
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("Hit Finish");
             SceneManager.LoadScene("WinScene");
-        }
-
-        if (other.gameObject.CompareTag("Spike"))
-        {
-            Debug.Log("Hit Spike");
-            // ? playerHealth.TakeDamage(1);
-
-            //Play SFX for getting hurt
-            soundManager.PlayPlayerDamagedSFX();
-        }
-        
+        }        
     }
 
     private void OnCollisionExit(Collision other)
@@ -256,5 +210,10 @@ public class PlayerBehaviour : MonoBehaviour
             Target = null;
             transform.SetParent(null);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        playerHealth.TakeDamage(damage);
     }
 }

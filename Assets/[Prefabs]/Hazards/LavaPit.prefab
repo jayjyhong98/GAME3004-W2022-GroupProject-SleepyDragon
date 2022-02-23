@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7423063045998731369}
   - component: {fileID: 4213476342238500472}
   - component: {fileID: -1954351288969271982}
+  - component: {fileID: 4984518705349770977}
   m_Layer: 0
   m_Name: LavaPit
   m_TagString: Lava
@@ -112,3 +113,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.837837, y: 7.22036, z: 14.216456}
   m_Center: {x: 0.34359604, y: 3.248322, z: -0.30650854}
+--- !u!114 &4984518705349770977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936541282444689852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e41c1a28afad14438c7e60aaf7b29b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnController: {fileID: 0}
+  type: 1
+  damage: 10

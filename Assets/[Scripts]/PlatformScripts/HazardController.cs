@@ -1,45 +1,76 @@
 //*********************************************************************************************************
-// Author: Jeongyeon Jane Hong
+// Author: Jeongyeon Jane Hong & Pauleen
 //
 // Last Modified: February 5, 2022
 //  
-// Description: This script is used to implement Lava pit.
+// Description: This script is used to implement hazard responses.
 //
 //******************************************************************************************************
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum HazardType
+{
+    PIT,
+    DAMAGE,
+    DEATHPLANE,
+    ENEMY
+}
+
 public class HazardController : MonoBehaviour
 {
-    public SpawnController spawnController;
+    // Spawnpoint
+    [SerializeField]
+    private SpawnController spawnController;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //spawnController = GameObject.FindObjectOfType<SpawnController>();
-    }
+    // Enum for type of hazard
+    [SerializeField]
+    private HazardType type = HazardType.DAMAGE;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Value for hazard's damage on player
+    [SerializeField]
+    private int damage = 10;
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.CompareTag("Player"))
-        //{
-        //    Debug.Log("Hit Lava");
-        //    other.transform.position = spawnController.currentSpawnPoint.position;
-        //    Debug.Log(other.transform.position);
-        //}
-
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit Lava");
-            // Spawn player to currentSpawnPoint
-            other.transform.position = spawnController.currentSpawnPoint.position;
+            // Pit hazards will send player back to spawnpoint as well as deal damage
+            if (type == HazardType.PIT)
+            {
+                Debug.Log("Fell into pit (water/lava)");
+                other.transform.position = spawnController.currentSpawnPoint.position;
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
+
+            // Damage hazards will deal damage only
+            if (type == HazardType.DAMAGE)
+            {
+                Debug.Log("Recieved damage!");
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            // Deathplanes send player back to last spawnpoint and deals significant damage
+            if (type == HazardType.DEATHPLANE)
+            {
+                Debug.Log("Hit Death Plane");
+                other.transform.position = spawnController.currentSpawnPoint.position;
+                other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
+
+            // Enemies damage
+            if (type == HazardType.ENEMY)
+            {
+                Debug.Log("Enemy touch!");
+                other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
         }
     }
 }

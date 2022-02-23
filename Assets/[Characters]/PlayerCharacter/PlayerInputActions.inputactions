@@ -112,7 +112,7 @@
                 {
                     "name": "",
                     "id": "fb87c6ff-75a9-42ed-a603-9c6cfd48292c",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

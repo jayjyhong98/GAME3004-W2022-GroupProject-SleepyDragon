@@ -11,6 +11,7 @@ TagManager:
   - Audio
   - Slime
   - TurtleShell
+  - Water
   layers:
   - Default
   - TransparentFX
