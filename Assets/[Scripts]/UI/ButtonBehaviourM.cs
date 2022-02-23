@@ -57,4 +57,44 @@ public class ButtonBehaviourM : MonoBehaviour
         soundManager.PlayButtonSFX();
         SceneManager.LoadScene("GameOverScene");
     }
+
+    public void OnControlButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnKeyMappingButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnPauseButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnInventoryButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnResumeButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnSaveButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnBackSoundButton()
+    {
+        soundManager.PlayButtonSFX();
+    }
+
+    public void OnLoadButtonPressed()
+    {
+        soundManager.PlayButtonSFX();
+    }
 }
