@@ -21,8 +21,10 @@ public class SoundManagerScript : MonoBehaviour
 
     [SerializeField]
     public AudioMixer mixer;
-    public AudioSource menuMusic, optionMusic, overworldMusic, victoryMusic;
-    public AudioSource buttonSFX;
+    public AudioSource menuMusic, optionMusic, overworldMusic, victoryMusic, defeatMusic;
+    public AudioSource buttonSFX, inventorySFX;
+    public AudioSource playerAttackSFX, playerDamagedSFX, playerJumpSFX, playerHealSFX, playerRunGrassSFX;
+    public AudioSource enemyAttackSFX, enemyDamagedSFX;
     public float volume = 0f;
     AudioMixerGroup a;
 
@@ -85,6 +87,41 @@ public class SoundManagerScript : MonoBehaviour
     {
         buttonSFX.Play();
     }
+    
+    public void PlayPlayerAttackSFX()
+    {
+        playerAttackSFX.Play();
+    }
+
+    public void PlayPlayerDamagedSFX()
+    {
+        playerDamagedSFX.Play();
+    }
+
+    public void PlayPlayerJumpSFX()
+    {
+        playerJumpSFX.Play();
+    }
+
+    public void PlayInventorySFX()
+    {
+        inventorySFX.Play();
+    }
+
+    public void PlayPlayerHealSFX() //This is also used for consuming items in inventory
+    {
+        playerHealSFX.Play();
+    }
+
+    public void PlayPlayerRunGrassSFX()
+    {
+        playerRunGrassSFX.Play();
+    }
+
+    public void StopPlayerRunGrassSFX()
+    {
+        playerRunGrassSFX.Stop();
+    }
 
     //Play a music track depending on current scene
     public void PlayBGM()
@@ -101,11 +138,15 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "GameOverScene":
                 Debug.Log("over");
-                victoryMusic.Play();
+                defeatMusic.Play();
                 break;
             case "GameLevelScene 1":
                 Debug.Log("lvl");
                 overworldMusic.Play();
+                break;
+            case "WinScene":
+                Debug.Log("win");
+                victoryMusic.Play();
                 break;
             default:
                 Debug.Log("Invalid Scene");

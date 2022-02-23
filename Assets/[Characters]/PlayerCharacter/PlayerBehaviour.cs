@@ -52,6 +52,9 @@ public class PlayerBehaviour : MonoBehaviour
     //public Vector3 StartPos;
     PlayerHealth playerHealth;
 
+    //Sound Manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
 
     void Start()
     {
@@ -62,6 +65,9 @@ public class PlayerBehaviour : MonoBehaviour
         //characterController = GetComponent<CharacterController>();
         //characterController.detectCollisions
         //StartPos = transform.position;
+
+        //Get soundmanager
+        soundManager = FindObjectOfType<SoundManagerScript>();
     }
 
 
@@ -150,12 +156,20 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveVector = value.Get<Vector2>();
-
+        
         // Update movement animation
         if (moveVector != Vector2.zero)
+        {
             animator.SetBool(IsRunningHash, true);
+
+            if (!soundManager.playerRunGrassSFX.isPlaying)
+                soundManager.PlayPlayerRunGrassSFX();
+        }
         else
+        {
             animator.SetBool(IsRunningHash, false);
+            soundManager.StopPlayerRunGrassSFX();
+        }
     }
 
     public void OnLook(InputValue value)
@@ -172,12 +186,18 @@ public class PlayerBehaviour : MonoBehaviour
         //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
         GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
 
+        //Play Jump SFX
+        soundManager.PlayPlayerJumpSFX();
+
         // TODO ADD JUMP ANIMATION
     }
 
     public void OnSwordAttack(InputValue value)
     {
         animator.SetTrigger(SwordAttackHash);
+
+        //Play SFX for attacking
+        soundManager.PlayPlayerAttackSFX();
     }
 
     void OnDrawGizmos()
@@ -202,6 +222,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("TurtleShell collision");
             playerHealth.TakeDamage(5);
+
+            //Play Hurt SFX
+            soundManager.PlayPlayerDamagedSFX();
         }
     }
 
@@ -211,13 +234,16 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("Hit Finish");
-            SceneManager.LoadScene("GameOverScene");
+            SceneManager.LoadScene("WinScene");
         }
 
         if (other.gameObject.CompareTag("Spike"))
         {
             Debug.Log("Hit Spike");
             // ? playerHealth.TakeDamage(1);
+
+            //Play SFX for getting hurt
+            soundManager.PlayPlayerDamagedSFX();
         }
         
     }

@@ -21,10 +21,15 @@ public class InventorySystem : MonoBehaviour
     public PlayerHealth playerHealth;
     bool[] itemUsedList;
     bool m_bIsEnabled;
+
+    //Sound manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
     // Start is called before the first frame update
     void Start()
     {
         InitInventory();
+        soundManager = FindObjectOfType<SoundManagerScript>();
     }
 
     void InitInventory()
@@ -79,6 +84,9 @@ public class InventorySystem : MonoBehaviour
         itemButtonList[idx].interactable = false;
         itemUsedList[idx] = true;
         playerHealth.AddHealth(1);
+
+        //Play SFX for item click
+        soundManager.PlayPlayerHealSFX();
     }
 
 }
