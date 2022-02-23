@@ -181,14 +181,6 @@ public class PlayerBehaviour : MonoBehaviour
             transform.SetParent(collision.transform);
 
         }
-        if (collision.gameObject.CompareTag("TurtleShell"))
-        {
-            Debug.Log("TurtleShell collision");
-            playerHealth.TakeDamage(5);
-
-            //Play Hurt SFX
-            soundManager.PlayPlayerDamagedSFX();
-        }
     }
 
     // Check Trigger

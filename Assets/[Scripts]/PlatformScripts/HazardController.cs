@@ -1,5 +1,5 @@
 //*********************************************************************************************************
-// Author: Jeongyeon Jane Hong & Pauleen
+// Author: Jeongyeon Jane Hong & Pauleen Lam
 //
 // Last Modified: February 5, 2022
 //  
