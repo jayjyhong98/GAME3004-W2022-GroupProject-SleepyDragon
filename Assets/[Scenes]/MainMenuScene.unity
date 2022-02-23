@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 56935721}
   - component: {fileID: 56935720}
   - component: {fileID: 56935719}
+  - component: {fileID: 56935722}
   m_Layer: 5
   m_Name: LoadButton
   m_TagString: Untagged
@@ -761,9 +762,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnLoadClick
+      - m_Target: {fileID: 56935722}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnLoadButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -811,6 +812,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56935717}
   m_CullTransparentMesh: 1
+--- !u!114 &56935722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56935717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &152769393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2114,7 @@ GameObject:
   - component: {fileID: 738533383}
   - component: {fileID: 738533382}
   - component: {fileID: 738533381}
+  - component: {fileID: 738533384}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -2196,6 +2211,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 738533384}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnBackSoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &738533382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,6 +2261,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738533379}
   m_CullTransparentMesh: 1
+--- !u!114 &738533384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738533379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &756810968
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,6 +4149,7 @@ GameObject:
   - component: {fileID: 1596642655}
   - component: {fileID: 1596642654}
   - component: {fileID: 1596642653}
+  - component: {fileID: 1596642656}
   m_Layer: 5
   m_Name: Save Slot 3
   m_TagString: Untagged
@@ -4217,6 +4258,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1596642656}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnSaveButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1596642654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4255,6 +4308,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596642651}
   m_CullTransparentMesh: 1
+--- !u!114 &1596642656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596642651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &1636229787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,6 +4420,7 @@ GameObject:
   - component: {fileID: 1688607958}
   - component: {fileID: 1688607957}
   - component: {fileID: 1688607956}
+  - component: {fileID: 1688607959}
   m_Layer: 5
   m_Name: Save Slot 2
   m_TagString: Untagged
@@ -4462,6 +4529,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1688607959}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnSaveButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1688607957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4500,6 +4579,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688607954}
   m_CullTransparentMesh: 1
+--- !u!114 &1688607959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688607954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &1710815427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,6 +4604,7 @@ GameObject:
   - component: {fileID: 1710815431}
   - component: {fileID: 1710815430}
   - component: {fileID: 1710815429}
+  - component: {fileID: 1710815432}
   m_Layer: 5
   m_Name: Save Slot 5
   m_TagString: Untagged
@@ -4620,6 +4713,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1710815432}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnSaveButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1710815430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4658,6 +4763,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710815427}
   m_CullTransparentMesh: 1
+--- !u!114 &1710815432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710815427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &1760336979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5151,6 +5269,7 @@ GameObject:
   - component: {fileID: 1918412084}
   - component: {fileID: 1918412083}
   - component: {fileID: 1918412082}
+  - component: {fileID: 1918412085}
   m_Layer: 5
   m_Name: Save Slot 4
   m_TagString: Untagged
@@ -5259,6 +5378,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1918412085}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnSaveButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1918412083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,6 +5428,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918412080}
   m_CullTransparentMesh: 1
+--- !u!114 &1918412085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918412080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &1981550557
 GameObject:
   m_ObjectHideFlags: 0
@@ -5617,6 +5761,7 @@ GameObject:
   - component: {fileID: 2098886098}
   - component: {fileID: 2098886097}
   - component: {fileID: 2098886096}
+  - component: {fileID: 2098886099}
   m_Layer: 5
   m_Name: Save Slot 1
   m_TagString: Untagged
@@ -5725,6 +5870,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2098886099}
+        m_TargetAssemblyTypeName: ButtonBehaviourM, Assembly-CSharp
+        m_MethodName: OnSaveButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2098886097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5763,6 +5920,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098886094}
   m_CullTransparentMesh: 1
+--- !u!114 &2098886099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098886094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09858aba222324d8d21b66275d418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &2108850837
 GameObject:
   m_ObjectHideFlags: 0
