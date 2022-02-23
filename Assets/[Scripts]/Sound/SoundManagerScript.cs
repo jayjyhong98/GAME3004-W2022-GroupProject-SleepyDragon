@@ -122,6 +122,15 @@ public class SoundManagerScript : MonoBehaviour
     {
         playerRunGrassSFX.Stop();
     }
+    public void PlayEnemyAttackSFX()
+    {
+        enemyAttackSFX.Play();
+    }
+
+    public void PlayEnemyHurtSFX()
+    {
+        enemyDamagedSFX.Play();
+    }
 
     //Play a music track depending on current scene
     public void PlayBGM()
