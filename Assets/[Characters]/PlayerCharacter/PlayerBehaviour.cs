@@ -41,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Components
     Animator animator = null;
     PlayerHealth playerHealth;
-    public GameObject followTarget;
+    public GameObject cameraControlPoint;
 
     //public Transform player;
     public Vector3 OriginScale;
@@ -71,13 +71,17 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        cameraControlPoint.transform.position = transform.position;
         // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        var angle = followTarget.transform.localEulerAngles;
+        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        var angle = cameraControlPoint.transform.localEulerAngles;
         angle.z = 0;
-        followTarget.transform.localEulerAngles = angle;
+        cameraControlPoint.transform.localEulerAngles = angle;
 
+
+        // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
 
