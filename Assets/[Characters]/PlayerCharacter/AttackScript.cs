@@ -11,7 +11,7 @@ public class AttackScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-                Debug.Log("Damage the enemy somehow");
+                Debug.Log("Fell into pit (water/lava)");
                 other.GetComponent<EnemyBehaviour>().TakeDamage(damage);
         }
     }

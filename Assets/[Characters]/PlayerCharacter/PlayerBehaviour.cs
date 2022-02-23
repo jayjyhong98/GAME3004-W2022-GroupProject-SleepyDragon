@@ -36,6 +36,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Player Input References
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
+    Vector2 lookVector = Vector2.zero;
 
     // Components
     Animator animator = null;
@@ -70,6 +71,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
+        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        followTarget.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        var angle = followTarget.transform.localEulerAngles;
+        angle.z = 0;
+        followTarget.transform.localEulerAngles = angle;
+
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
 
@@ -125,6 +133,12 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetBool(IsRunningHash, false);
             soundManager.StopPlayerRunGrassSFX();
         }
+    }
+
+    public void OnLook(InputValue value)
+    {
+        lookVector = value.Get<Vector2>();
+        Debug.Log(lookVector);
     }
 
     public void OnJump(InputValue value)

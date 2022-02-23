@@ -68,6 +68,7 @@ public class HazardController : MonoBehaviour
             // Enemies damage
             if (type == HazardType.ENEMY)
             {
+                Debug.Log("Enemy touch!");
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
         }
