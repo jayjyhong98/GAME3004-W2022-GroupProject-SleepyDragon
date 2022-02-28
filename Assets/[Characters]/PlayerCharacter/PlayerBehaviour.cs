@@ -94,7 +94,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!(moveVector.magnitude > 0)) 
             moveDirection = Vector3.zero;
 
-        moveDirection = new Vector3(moveVector.x , 0.0f, moveVector.y);
+        moveDirection = Camera.main.transform.forward * moveVector.y + Camera.main.transform.right * moveVector.x;
 
         if (moveVector != Vector2.zero)
         {
