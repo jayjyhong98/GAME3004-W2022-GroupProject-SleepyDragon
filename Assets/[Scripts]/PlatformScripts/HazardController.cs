@@ -15,6 +15,8 @@ enum HazardType
     PIT,
     DAMAGE,
     DEATHPLANE,
+    AXE,
+    GRINDER,
     ENEMY
 }
 
@@ -43,6 +45,20 @@ public class HazardController : MonoBehaviour
                 other.transform.position = spawnController.currentSpawnPoint.position;
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
+
+            //// Axe hazards will give a deal damage to player
+            //if (type == HazardType.AXE)
+            //{
+            //    Debug.Log("Hit Axe");
+            //    other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            //}
+
+            //// Axe hazards will give a deal damage to player
+            //if (type == HazardType.GRINDER)
+            //{
+            //    Debug.Log("Hit Grinder");
+            //    other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            //}
 
             // Damage hazards will deal damage only
             if (type == HazardType.DAMAGE)
