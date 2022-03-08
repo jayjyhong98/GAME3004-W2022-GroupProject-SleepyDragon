@@ -196,7 +196,15 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Hit Finish");
             SceneManager.LoadScene("WinScene");
-        }        
+        }
+
+        // Pickup - Biscuit
+        if (other.gameObject.CompareTag("Biscuit"))
+        {
+            Debug.Log("Hit Biscuit");
+            Destroy(other.gameObject);
+            playerHealth.AddHealth(10);
+        }
     }
 
     private void OnCollisionExit(Collision other)
