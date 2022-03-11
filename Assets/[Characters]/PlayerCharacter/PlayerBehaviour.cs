@@ -71,14 +71,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
-        cameraControlPoint.transform.position = transform.position;
-        // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        var angle = cameraControlPoint.transform.localEulerAngles;
-        angle.z = 0;
-        cameraControlPoint.transform.localEulerAngles = angle;
+        //// PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        //cameraControlPoint.transform.position = transform.position;
+        //// Rotate the camera based on Vector2 values received from PlayerActionMap
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        //var angle = cameraControlPoint.transform.localEulerAngles;
+        //angle.z = 0;
+        //cameraControlPoint.transform.localEulerAngles = angle;
 
 
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
@@ -139,11 +139,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void OnLook(InputValue value)
-    {
-        lookVector = value.Get<Vector2>();
-        Debug.Log(lookVector);
-    }
+    //public void OnLook(InputValue value)
+    //{
+    //    lookVector = value.Get<Vector2>();
+    //    //Debug.Log(lookVector);
+    //}
 
     public void OnJump(InputValue value)
     {
