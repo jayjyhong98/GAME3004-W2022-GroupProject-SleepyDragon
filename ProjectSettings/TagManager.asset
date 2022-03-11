@@ -14,6 +14,9 @@ TagManager:
   - Water
   - Sword
   - Enemy
+  - Biscuit
+  - Axe
+  - Grinder
   layers:
   - Default
   - TransparentFX
