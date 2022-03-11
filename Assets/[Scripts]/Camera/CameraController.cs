@@ -11,6 +11,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[System.Serializable]
+public enum CameraPosition
+{
+    LEFT,
+    RIGHT,
+    FRONT,
+    BACK
+}
+
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
@@ -42,6 +51,30 @@ public class CameraController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookVector = value.Get<Vector2>();
-        Debug.Log(lookVector);
+    }
+
+    public void RepositionCamera(CameraPosition pos, float xRot = 12)
+    {
+        Quaternion newAngle = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+        switch (pos)
+        {
+            case CameraPosition.LEFT:
+                newAngle = Quaternion.Euler(xRot, 90.0f, 0.0f);
+                break;
+            case CameraPosition.RIGHT:
+                newAngle = Quaternion.Euler(xRot, -90.0f, 0.0f);
+                break;
+            case CameraPosition.FRONT:
+                newAngle = Quaternion.Euler(xRot, 180.0f, 0.0f);
+                break;
+            case CameraPosition.BACK:
+                newAngle = Quaternion.Euler(xRot, 0.0f, 0.0f);
+                break;
+        }
+
+        newAngle.z = transform.rotation.z;
+
+        transform.rotation = newAngle;
     }
 }

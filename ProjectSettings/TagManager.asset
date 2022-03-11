@@ -17,6 +17,7 @@ TagManager:
   - Biscuit
   - Axe
   - Grinder
+  - CameraController
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Ground
   - Hide In Minimap
   - Player
-  - 
+  - Camera
   - 
   - 
   - 
