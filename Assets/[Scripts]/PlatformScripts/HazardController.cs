@@ -131,13 +131,22 @@ public class HazardController : MonoBehaviour
                 //soundManager.PlaySwingAxeSFX();
                 break;
             case HazardType.GRINDER:
-                soundManager.PlayRollingGrinderLoopSFX();
+                if (soundManager)
+                {
+                    soundManager.PlayRollingGrinderLoopSFX();
+                }
                 break;
             case HazardType.LAVA:
-                soundManager.PlayLavaPitLoopSFX();
+                if (soundManager)
+                {
+                    soundManager.PlayLavaPitLoopSFX();
+                }
                 break;
             case HazardType.PIT:
-                soundManager.PlayLavaPitLoopSFX();
+                if (soundManager)
+                {
+                    soundManager.PlayLavaPitLoopSFX();
+                }
                 break;
         }
     }

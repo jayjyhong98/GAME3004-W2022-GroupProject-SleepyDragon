@@ -144,6 +144,17 @@
                 },
                 {
                     "name": "",
+                    "id": "83d686e2-5a63-4fa0-b10e-66bc6963bf1e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d51adca0-5585-45a0-a55e-7005378c80d1",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",

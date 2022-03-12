@@ -23,12 +23,13 @@ public class SwordAttack : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && attacking)
         {
-            Debug.Log("hello??????????????????????????????????????????");
-            Destroy(collision.gameObject);
+            Debug.Log("Attacking the enemy");
+            collision.gameObject.GetComponentInParent<EnemyBehaviour>().TakeDamage(damage);
+            //Destroy(collision.gameObject);
         }
     }
 

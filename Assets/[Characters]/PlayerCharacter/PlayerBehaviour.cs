@@ -21,10 +21,6 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private float DoublejumpForce = 14;
 
-    //[SerializeField]
-    private float cameraRotationSensitivity = 30;
-    //private float playerRotationSpeed = 10;
-
     // Player Jump
     [SerializeField, Header("Ground Detection")]
     private Transform groundCheck = null;
@@ -43,7 +39,6 @@ public class PlayerBehaviour : MonoBehaviour
     // Player Input References
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
-    Vector2 lookVector = Vector2.zero;
 
     // Components
     Animator animator = null;
@@ -75,16 +70,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        //// PLAYER CAMERA STUFF -----------------------------------------------------------------------------
-        //cameraControlPoint.transform.position = transform.position;
-        //// Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        //var angle = cameraControlPoint.transform.localEulerAngles;
-        //angle.z = 0;
-        //cameraControlPoint.transform.localEulerAngles = angle;
-
-
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
@@ -143,12 +128,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void OnLook(InputValue value)
-    {
-        lookVector = value.Get<Vector2>();
-        Debug.Log(lookVector);
-    }
-
     public void OnJump(InputValue value)
     {
         if (!isGrounded) return; // Restrict  to single jump
@@ -159,9 +138,10 @@ public class PlayerBehaviour : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
 
         //Play Jump SFX
-        soundManager.PlayPlayerJumpSFX();
-
-        // TODO ADD JUMP ANIMATION
+        if (soundManager)
+        {
+            soundManager.PlayPlayerJumpSFX();
+        }
     }
 
     public void OnDoubleJump(InputValue value)
@@ -174,9 +154,10 @@ public class PlayerBehaviour : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(Vector3.up * DoublejumpForce);
 
         //Play Jump SFX
-        soundManager.PlayPlayerJumpSFX();
-
-        // TODO ADD JUMP ANIMATION
+        if (soundManager)
+        {
+            soundManager.PlayPlayerJumpSFX();
+        }
     }
 
     public void OnSwordAttack(InputValue value)
@@ -186,7 +167,10 @@ public class PlayerBehaviour : MonoBehaviour
         sword.Attack();
 
         //Play SFX for attacking
-        soundManager.PlayPlayerAttackSFX();
+        if (soundManager)
+        {
+            soundManager.PlayPlayerAttackSFX();
+        }
     }
 
     void OnDrawGizmos()
