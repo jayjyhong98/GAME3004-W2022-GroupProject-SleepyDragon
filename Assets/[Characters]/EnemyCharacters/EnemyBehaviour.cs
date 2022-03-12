@@ -114,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         transform.LookAt(lookAtPosition);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage = 1)
     {
         Debug.Log("Enemy is taking damage");
         //soundManager.PlayEnemyHurtSFX();

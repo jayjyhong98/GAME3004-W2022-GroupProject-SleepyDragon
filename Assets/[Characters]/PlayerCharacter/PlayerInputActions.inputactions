@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "1fbf25b9-3b40-4445-997e-1ea2b57e5965",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -174,27 +183,10 @@
                     "action": "DoubleJump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "CameraActionMap",
-            "id": "71bd8d37-5626-4182-8aaa-1834650a0327",
-            "actions": [
-                {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "770a38b7-6816-4781-adb3-f02833478ee2",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "b754d553-389c-4a82-a40c-d09be84ea882",
+                    "id": "322b617b-5dd0-4e17-8c9b-c441167d54e7",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
@@ -204,6 +196,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "CameraActionMap",
+            "id": "71bd8d37-5626-4182-8aaa-1834650a0327",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []

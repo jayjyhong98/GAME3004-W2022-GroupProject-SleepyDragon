@@ -39,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Player Input References
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
+    public Vector2 lookVector = Vector2.zero;
 
     // Components
     Animator animator = null;
@@ -162,8 +163,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void OnSwordAttack(InputValue value)
     {
+        // Animate the attack
         animator.SetTrigger(SwordAttackHash);
 
+        // Tell the sword it is active (prevents accidental damage on enemy)
         sword.Attack();
 
         //Play SFX for attacking
@@ -171,6 +174,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             soundManager.PlayPlayerAttackSFX();
         }
+    }
+
+    // Get values from the new input system
+    public void OnLook(InputValue value)
+    {
+        lookVector = value.Get<Vector2>();
     }
 
     void OnDrawGizmos()

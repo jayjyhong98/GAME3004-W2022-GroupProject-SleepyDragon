@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+    private PlayerBehaviour playerBehaviour;
 
     private float cameraRotationSensitivity = 30;
 
@@ -33,12 +34,15 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerBehaviour = player.GetComponent<PlayerBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        // Update look vecter from player
+        lookVector = playerBehaviour.lookVector;
+        // Follow the player's position
         transform.position = player.transform.position;
         // Rotate the camera based on Vector2 values received from PlayerActionMap
         transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
@@ -48,15 +52,12 @@ public class CameraController : MonoBehaviour
         transform.localEulerAngles = angle;
     }
 
-    public void OnLook(InputValue value)
-    {
-        lookVector = value.Get<Vector2>();
-    }
-
+    // function called by camera adjusting mesh bounds. will change the camera's position/rotation around player
     public void RepositionCamera(CameraPosition pos, float xRot = 12)
     {
         Quaternion newAngle = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
+        // Enum determines what angle the CameraController should be
         switch (pos)
         {
             case CameraPosition.LEFT:
