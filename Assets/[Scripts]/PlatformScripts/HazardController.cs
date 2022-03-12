@@ -17,6 +17,8 @@ enum HazardType
     DEATHPLANE,
     AXE,
     GRINDER,
+    SPIKE,
+    LAVA,
     ENEMY
 }
 
@@ -34,6 +36,17 @@ public class HazardController : MonoBehaviour
     [SerializeField]
     private int damage = 1;
 
+    //Sound Manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
+
+    void Start()
+    {
+        soundManager = FindObjectOfType<SoundManagerScript>();
+
+        SetDefaultHazardsSFX();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -42,28 +55,47 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.PIT)
             {
                 Debug.Log("Fell into pit (water/lava)");
+                soundManager.PlayLavaPitDamageSFX();
                 other.transform.position = spawnController.currentSpawnPoint.position;
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
 
-            //// Axe hazards will give a deal damage to player
-            //if (type == HazardType.AXE)
-            //{
-            //    Debug.Log("Hit Axe");
-            //    other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
-            //}
+            // Axe hazards will give a deal damage to player
+            if (type == HazardType.AXE)
+            {
+                Debug.Log("Hit Axe");
+                soundManager.PlayPlayerDamagedSFX();
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
 
-            //// Axe hazards will give a deal damage to player
-            //if (type == HazardType.GRINDER)
-            //{
-            //    Debug.Log("Hit Grinder");
-            //    other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
-            //}
+            // Axe hazards will give a deal damage to player
+            if (type == HazardType.GRINDER)
+            {
+                Debug.Log("Hit Grinder");
+                soundManager.PlayPlayerDamagedSFX();
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
 
             // Damage hazards will deal damage only
             if (type == HazardType.DAMAGE)
             {
                 Debug.Log("Recieved damage!");
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
+
+            // Damage hazards will deal damage only
+            if (type == HazardType.SPIKE)
+            {
+                Debug.Log("Recieved damage!");
+                soundManager.PlaySpikePitDamageSFX();
+                other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            }
+
+            // Damage hazards will deal damage only
+            if (type == HazardType.LAVA)
+            {
+                Debug.Log("Recieved damage!");
+                soundManager.PlayLavaPitDamageSFX();
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
         }
@@ -85,8 +117,28 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.ENEMY)
             {
                 Debug.Log("Enemy touch!");
+                soundManager.PlayPlayerDamagedSFX();
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
+        }
+    }
+
+    public void SetDefaultHazardsSFX()
+    {
+        switch (type)
+        {
+            case HazardType.AXE:
+                soundManager.PlaySwingAxeSFX();
+                break;
+            case HazardType.GRINDER:
+                soundManager.PlayRollingGrinderLoopSFX();
+                break;
+            case HazardType.LAVA:
+                soundManager.PlayLavaPitLoopSFX();
+                break;
+            case HazardType.PIT:
+                soundManager.PlayLavaPitLoopSFX();
+                break;
         }
     }
 }

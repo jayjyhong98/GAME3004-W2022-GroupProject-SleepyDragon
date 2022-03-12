@@ -11,8 +11,14 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     private bool isInvulnerable = true;
 
+    //Sound Manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
+
     void Start()
     {
+        soundManager = FindObjectOfType<SoundManagerScript>();
+
         if (currentHealth > maxhealth)
         {
             currentHealth = maxhealth;
@@ -52,7 +58,10 @@ public class PlayerHealth : MonoBehaviour
 
   
     public void AddHealth(int _amount)
-    { //add amount of health from inventory screen when seed button is pressed
+    {
+        soundManager.PlayPlayerHealSFX();
+
+        //add amount of health from inventory screen when seed button is pressed
         if (currentHealth < maxhealth)
         {  //check if health is under max health
             currentHealth += _amount; //add amount to current health

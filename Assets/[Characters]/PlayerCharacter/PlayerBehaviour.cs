@@ -214,6 +214,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             //Destroy(other.gameObject);
+            //soundManager.PlayPlayerDamagedSFX();
             TakeDamage(1);
         }
     }
@@ -230,6 +231,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //soundManager.PlayPlayerDamagedSFX();
         playerHealth.TakeDamage(damage);
     }
 }

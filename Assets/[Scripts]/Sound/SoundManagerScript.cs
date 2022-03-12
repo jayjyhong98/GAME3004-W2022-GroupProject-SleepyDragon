@@ -139,6 +139,7 @@ public class SoundManagerScript : MonoBehaviour
     public void PlayEnemyHurtSFX()      //Enemy getting hurt
     {
         enemyDamagedSFX.Play();
+        Debug.Log("Play Enemy Damage Sound");
     }
 
 
@@ -146,11 +147,13 @@ public class SoundManagerScript : MonoBehaviour
     public void PlayLavaPitLoopSFX()    //Lava pit loop, meant to be constantly play when pit is created
     {
         lavaPitLoopSFX.Play();
+        Debug.Log("Play Lava Loop Sound");
     }
 
     public void PlayLavaPitDamageSFX()  //Played when lava pit damage player
     {
         lavaPitDamageSFX.Play();
+        Debug.Log("Play Lava Damage Sound");
     }
 
     public void PlaySpikePitDamageSFX() //Played when spike pit damage player
@@ -161,11 +164,13 @@ public class SoundManagerScript : MonoBehaviour
     public void PlaySwingAxeSFX()       //Play when the axe swings
     {
         swingAxeSFX.Play();
+        Debug.Log("Play Swing Loop Sound");
     }
 
     public void PlayRollingGrinderLoopSFX()//Grinder loop, constantly play after grinder is created
     {
         rollingGrinderLoopSFX.Play();
+        Debug.Log("Play Grinder Loop Sound");
     }
 
 
