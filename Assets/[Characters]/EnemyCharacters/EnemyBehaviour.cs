@@ -114,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            enabled = false;
+            transform.position = new Vector3(-0,-100, 0);
         }
     }
 

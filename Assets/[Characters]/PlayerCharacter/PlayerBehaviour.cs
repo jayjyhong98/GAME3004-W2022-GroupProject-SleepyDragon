@@ -33,6 +33,10 @@ public class PlayerBehaviour : MonoBehaviour
     private Transform Target = null;
     private Vector3 TargetPrevPos = Vector3.zero;
 
+    // PlayerAttack
+    [SerializeField]
+    private SwordAttack sword;
+
     // Player Input References
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
@@ -122,7 +126,6 @@ public class PlayerBehaviour : MonoBehaviour
     // Receive Input Actions, these functions are called when the PlayerInput component makes a corrisponding broadcast
     public void OnMove(InputValue value)
     {
-        Debug.Log("hello?");
         moveVector = value.Get<Vector2>();
         
         // Update movement animation
@@ -159,8 +162,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         animator.SetTrigger(SwordAttackHash);
 
+        sword.Attack();
+
         //Play SFX for attacking
-        soundManager.PlayPlayerAttackSFX();
+        if (soundManager)
+        {
+            soundManager.PlayPlayerAttackSFX();
+        }
     }
 
     void OnDrawGizmos()
@@ -204,8 +212,7 @@ public class PlayerBehaviour : MonoBehaviour
         // Enemy
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy");
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             TakeDamage(1);
         }
     }
