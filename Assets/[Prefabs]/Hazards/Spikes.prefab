@@ -129,3 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnController: {fileID: 0}
+  type: 5
+  damage: 1
+  soundManager: {fileID: 0}

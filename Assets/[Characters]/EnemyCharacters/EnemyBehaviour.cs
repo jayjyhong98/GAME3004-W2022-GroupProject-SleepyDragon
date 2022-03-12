@@ -42,6 +42,10 @@ public class EnemyBehaviour : MonoBehaviour
     public readonly int IsMovingHash = Animator.StringToHash("IsMoving");
     public readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
 
+    //Sound Manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +54,7 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        soundManager = FindObjectOfType<SoundManagerScript>();
     }
 
     // Update is called once per frame
@@ -66,6 +71,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 state = EnemyState.ATTACK;
                 animator.SetBool(IsAttackingHash, true);
+                //soundManager.PlayEnemyAttackSFX();
             }
             else
             {
@@ -111,10 +117,11 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Debug.Log("Enemy is taking damage");
+        //soundManager.PlayEnemyHurtSFX();
         health -= damage;
         if (health <= 0)
         {
-            enabled = false;
+            transform.position = new Vector3(-0,-100, 0);
         }
     }
 
