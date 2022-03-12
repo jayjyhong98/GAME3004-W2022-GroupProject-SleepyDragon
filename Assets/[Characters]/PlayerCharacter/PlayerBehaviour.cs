@@ -1,7 +1,7 @@
 //*********************************************************************************************************
-// Author: Pauleen Lam, Jeongyeon Jane Hong
+// Author: Pauleen Lam, Jeongyeon Jane Hong, Mariam Ogunlesi
 //
-// Last Modified: February 5, 2022
+// Last Modified: March 12, 2022
 //  
 // Description: This script is used to implement Player.
 //
@@ -18,6 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
     private float movementSpeed = 8;
     [SerializeField]
     private float jumpForce = 7;
+    [SerializeField]
+    private float DoublejumpForce = 14;
+
     //[SerializeField]
     private float cameraRotationSensitivity = 30;
     //private float playerRotationSpeed = 10;
@@ -32,10 +35,6 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 jumpVelocity = Vector3.zero;
     private Transform Target = null;
     private Vector3 TargetPrevPos = Vector3.zero;
-
-    // PlayerAttack
-    [SerializeField]
-    private SwordAttack sword;
 
     // Player Input References
     Vector2 moveVector = Vector2.zero;
@@ -75,14 +74,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        //// PLAYER CAMERA STUFF -----------------------------------------------------------------------------
-        //cameraControlPoint.transform.position = transform.position;
-        //// Rotate the camera based on Vector2 values received from PlayerActionMap
-        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        //var angle = cameraControlPoint.transform.localEulerAngles;
-        //angle.z = 0;
-        //cameraControlPoint.transform.localEulerAngles = angle;
+        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        cameraControlPoint.transform.position = transform.position;
+        // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
+        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        var angle = cameraControlPoint.transform.localEulerAngles;
+        angle.z = 0;
+        cameraControlPoint.transform.localEulerAngles = angle;
 
 
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
@@ -143,6 +142,12 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public void OnLook(InputValue value)
+    {
+        lookVector = value.Get<Vector2>();
+        Debug.Log(lookVector);
+    }
+
     public void OnJump(InputValue value)
     {
         if (!isGrounded) return; // Restrict  to single jump
@@ -158,17 +163,27 @@ public class PlayerBehaviour : MonoBehaviour
         // TODO ADD JUMP ANIMATION
     }
 
+    public void OnDoubleJump(InputValue value)
+    {
+        if (!isGrounded) return; // Restrict  to single jump
+
+        Debug.Log("DoubleJump");
+        // Set jump velocity
+        //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+        GetComponent<Rigidbody>().AddForce(Vector3.up * DoublejumpForce);
+
+        //Play Jump SFX
+        soundManager.PlayPlayerJumpSFX();
+
+        // TODO ADD JUMP ANIMATION
+    }
+
     public void OnSwordAttack(InputValue value)
     {
         animator.SetTrigger(SwordAttackHash);
 
-        sword.Attack();
-
         //Play SFX for attacking
-        if (soundManager)
-        {
-            soundManager.PlayPlayerAttackSFX();
-        }
+        soundManager.PlayPlayerAttackSFX();
     }
 
     void OnDrawGizmos()
@@ -206,16 +221,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Hit Biscuit");
             Destroy(other.gameObject);
-            playerHealth.AddHealth(1);
-            soundManager.PlayPlayerPickupSFX();
-        }
-
-        // Enemy
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            //Destroy(other.gameObject);
-            //soundManager.PlayPlayerDamagedSFX();
-            TakeDamage(1);
+            playerHealth.AddHealth(10);
         }
     }
 
@@ -231,7 +237,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        //soundManager.PlayPlayerDamagedSFX();
         playerHealth.TakeDamage(damage);
     }
 }

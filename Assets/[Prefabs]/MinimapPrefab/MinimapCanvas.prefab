@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 6899664562255488228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6899664562302071649}
@@ -53,20 +53,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 0}
-  registeredEnemy: []
-  registeredPickup: []
-  registeredCheckpoint: []
-  registeredObjective: []
-  canvasContainer: {fileID: 0}
+  registeredEnemy:
+  - {fileID: 0}
+  - {fileID: 0}
+  registeredPickup:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  registeredCheckpoint:
+  - {fileID: 0}
+  canvasContainer: {fileID: 6899664562436945432}
   minimapMask: {fileID: 6899664562302071678}
   minimapBorder: {fileID: 6899664562999247136}
   miniMapCamContainer: {fileID: 6899664562436945435}
   playerMinimapMarkerSprite: {fileID: 21300000, guid: b3dfcc33d3acc2d44a0be15636b943ca,
     type: 3}
-  enemyMinimapMarkerSprite: {fileID: 0}
-  pickupMinimapMarkerSprite: {fileID: 0}
-  checkpointMinimapMarkerSprite: {fileID: 0}
-  objectiveMinimapMarkerSprite: {fileID: 0}
+  enemyMinimapMarkerSprite: {fileID: 21300000, guid: 626e1cade9516f244a4c552f3c13001f,
+    type: 3}
+  pickupMinimapMarkerSprite: {fileID: 21300000, guid: ab942384e32a7ff488bb7df6ac3acf71,
+    type: 3}
+  checkpointMinimapMarkerSprite: {fileID: 21300000, guid: 8f1d6c493e1bbff44bf1a7bf57bad656,
+    type: 3}
   camFollowSpeed: 10
   miniMapSize: 256
   miniMapZoom: 26
@@ -136,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -225,7 +233,7 @@ RectTransform:
   m_GameObject: {fileID: 6899664562902117896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6899664562302071649}
@@ -406,7 +414,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 26
+  orthographic size: 40
   m_Depth: 10
   m_CullingMask:
     serializedVersion: 2

@@ -1,7 +1,7 @@
 //**************************************************************************************************************************************************************************************************************************************
 // Author: Mariam Ogunlesi
 //
-// Last Modified: feburary 19, 2022
+// Last Modified: March 12, 2022
 //  
 // Description: This Loads the Menu screen with the option to choose which level to reload
 //  
@@ -125,7 +125,7 @@ public class LoadMenuScreen : MonoBehaviour
                 //Don't load anything, but stats are loaded anyway because they're on LoadedSaveFile.loadedSaveData
                 break;
             case 1:
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
                 break;
             default:
                 //Don't load anything, but stats are loaded anyway because they're on LoadedSaveFile.loadedSaveData

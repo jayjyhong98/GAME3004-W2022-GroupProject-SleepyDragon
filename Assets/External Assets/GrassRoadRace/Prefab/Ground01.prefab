@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3393876}
   - component: {fileID: 2393876}
   - component: {fileID: 8483225706591715301}
+  - component: {fileID: 6347051443370682514}
   m_Layer: 7
   m_Name: Fence
   m_TagString: Ground
@@ -126,10 +127,24 @@ BoxCollider:
   m_GameObject: {fileID: 193876}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 56.145737, y: 1.7326423, z: 101.41693}
   m_Center: {x: 0.0000062577064, y: -0.42596906, z: 49.844276}
+--- !u!64 &6347051443370682514
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 905e121def2d7f44fac07f3e9d083c00, type: 3}
 --- !u!1 &193878
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +157,7 @@ GameObject:
   - component: {fileID: 3393878}
   - component: {fileID: 2393878}
   - component: {fileID: 6593878}
+  - component: {fileID: 1551051506637290221}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
@@ -223,7 +239,21 @@ BoxCollider:
   m_GameObject: {fileID: 193878}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 88.47823, y: 33.390667, z: 100}
-  m_Center: {x: 13.701259, y: -33.325924, z: 49.999985}
+  m_Size: {x: 81.03547, y: 33.390667, z: 100}
+  m_Center: {x: 9.9798765, y: -33.325924, z: 49.99999}
+--- !u!64 &1551051506637290221
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 905e121def2d7f44fac07f3e9d083c00, type: 3}
