@@ -23,8 +23,9 @@ public class SoundManagerScript : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource menuMusic, optionMusic, overworldMusic, victoryMusic, defeatMusic;
     public AudioSource buttonSFX, inventorySFX;
-    public AudioSource playerAttackSFX, playerDamagedSFX, playerJumpSFX, playerHealSFX, playerRunGrassSFX;
+    public AudioSource playerAttackSFX, playerDamagedSFX, playerJumpSFX, playerPickupSFX, playerHealSFX, playerRunGrassSFX;
     public AudioSource enemyAttackSFX, enemyDamagedSFX;
+    public AudioSource lavaPitLoopSFX, lavaPitDamageSFX, spikesDamageSFX, swingAxeSFX, rollingGrinderLoopSFX, rollingGrinderDamageSFX;
     public float volume = 0f;
     AudioMixerGroup a;
 
@@ -82,55 +83,96 @@ public class SoundManagerScript : MonoBehaviour
         }
     }
 
-    //Play a button sound effect
-    public void PlayButtonSFX()
+    //UI SOUND EFFECTS
+    public void PlayButtonSFX() //Buttons sfx
     {
         buttonSFX.Play();
     }
     
-    public void PlayPlayerAttackSFX()
+    //PLAYER SOUND EFFECTS
+    public void PlayPlayerAttackSFX()   //Attacks sfx
     {
         playerAttackSFX.Play();
     }
 
-    public void PlayPlayerDamagedSFX()
+    public void PlayPlayerDamagedSFX()  //Player hurt sfx
     {
         playerDamagedSFX.Play();
     }
 
-    public void PlayPlayerJumpSFX()
+    public void PlayPlayerJumpSFX()     //Jumping sfx
     {
         playerJumpSFX.Play();
     }
 
-    public void PlayInventorySFX()
+    public void PlayPlayerPickupSFX()   //Picking up item sfx
+    {
+        playerPickupSFX.Play();
+    }
+
+    public void PlayInventorySFX()      //Opening/Closing inventory
     {
         inventorySFX.Play();
     }
 
-    public void PlayPlayerHealSFX() //This is also used for consuming items in inventory
+    public void PlayPlayerHealSFX()     //Healing/Consuming items
     {
         playerHealSFX.Play();
     }
 
-    public void PlayPlayerRunGrassSFX()
+    public void PlayPlayerRunGrassSFX() //Looping sfx for running
     {
         playerRunGrassSFX.Play();
     }
 
-    public void StopPlayerRunGrassSFX()
+    public void StopPlayerRunGrassSFX() //Stop the running sfx loop
     {
         playerRunGrassSFX.Stop();
     }
-    public void PlayEnemyAttackSFX()
+
+    //ENEMY SOUND EFFECTS
+    public void PlayEnemyAttackSFX()    //Enemy attacks
     {
         enemyAttackSFX.Play();
     }
 
-    public void PlayEnemyHurtSFX()
+    public void PlayEnemyHurtSFX()      //Enemy getting hurt
     {
         enemyDamagedSFX.Play();
     }
+
+
+    //HAZARDS SOUND EFFECTS
+    public void PlayLavaPitLoopSFX()    //Lava pit loop, meant to be constantly play when pit is created
+    {
+        lavaPitLoopSFX.Play();
+    }
+
+    public void PlayLavaPitDamageSFX()  //Played when lava pit damage player
+    {
+        lavaPitDamageSFX.Play();
+    }
+
+    public void PlaySpikePitDamageSFX() //Played when spike pit damage player
+    {
+        spikesDamageSFX.Play();
+    }
+
+    public void PlaySwingAxeSFX()       //Play when the axe swings
+    {
+        swingAxeSFX.Play();
+    }
+
+    public void PlayRollingGrinderLoopSFX()//Grinder loop, constantly play after grinder is created
+    {
+        rollingGrinderLoopSFX.Play();
+    }
+
+
+    //public void PlayRollingGrinderDamageSFX()
+    //{
+    //    rollingGrinderDamageSFX.Play();
+    //}
 
     //Play a music track depending on current scene
     public void PlayBGM()
