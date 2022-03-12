@@ -32,7 +32,7 @@ public class HazardController : MonoBehaviour
 
     // Value for hazard's damage on player
     [SerializeField]
-    private int damage = 10;
+    private int damage = 1;
 
     private void OnTriggerEnter(Collider other)
     {

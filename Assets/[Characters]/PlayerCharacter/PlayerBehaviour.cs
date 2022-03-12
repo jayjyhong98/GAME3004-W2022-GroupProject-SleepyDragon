@@ -203,7 +203,15 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Hit Biscuit");
             Destroy(other.gameObject);
-            playerHealth.AddHealth(10);
+            playerHealth.AddHealth(1);
+        }
+
+        // Enemy
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy");
+            Destroy(other.gameObject);
+            TakeDamage(1);
         }
     }
 
