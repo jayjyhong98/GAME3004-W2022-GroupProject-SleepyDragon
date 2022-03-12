@@ -14,6 +14,10 @@ TagManager:
   - Water
   - Sword
   - Enemy
+  - Biscuit
+  - Axe
+  - Grinder
+  - CameraController
   layers:
   - Default
   - TransparentFX
@@ -25,7 +29,7 @@ TagManager:
   - Ground
   - Hide In Minimap
   - Player
-  - 
+  - Camera
   - 
   - 
   - 

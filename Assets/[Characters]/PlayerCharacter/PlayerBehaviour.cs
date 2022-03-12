@@ -71,14 +71,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
-        cameraControlPoint.transform.position = transform.position;
-        // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        var angle = cameraControlPoint.transform.localEulerAngles;
-        angle.z = 0;
-        cameraControlPoint.transform.localEulerAngles = angle;
+        //// PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        //cameraControlPoint.transform.position = transform.position;
+        //// Rotate the camera based on Vector2 values received from PlayerActionMap
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        //var angle = cameraControlPoint.transform.localEulerAngles;
+        //angle.z = 0;
+        //cameraControlPoint.transform.localEulerAngles = angle;
 
 
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
@@ -94,7 +94,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!(moveVector.magnitude > 0)) 
             moveDirection = Vector3.zero;
 
-        moveDirection = new Vector3(moveVector.x , 0.0f, moveVector.y);
+        moveDirection = Camera.main.transform.forward * moveVector.y + Camera.main.transform.right * moveVector.x;
 
         if (moveVector != Vector2.zero)
         {
@@ -139,11 +139,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void OnLook(InputValue value)
-    {
-        lookVector = value.Get<Vector2>();
-        Debug.Log(lookVector);
-    }
+    //public void OnLook(InputValue value)
+    //{
+    //    lookVector = value.Get<Vector2>();
+    //    //Debug.Log(lookVector);
+    //}
 
     public void OnJump(InputValue value)
     {
@@ -196,7 +196,23 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Hit Finish");
             SceneManager.LoadScene("WinScene");
-        }        
+        }
+
+        // Pickup - Biscuit
+        if (other.gameObject.CompareTag("Biscuit"))
+        {
+            Debug.Log("Hit Biscuit");
+            Destroy(other.gameObject);
+            playerHealth.AddHealth(1);
+        }
+
+        // Enemy
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy");
+            Destroy(other.gameObject);
+            TakeDamage(1);
+        }
     }
 
     private void OnCollisionExit(Collision other)
