@@ -278,8 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnController: {fileID: 0}
-  type: 1
+  type: 3
   damage: 10
+  soundManager: {fileID: 0}
 --- !u!1 &7641293651057028990
 GameObject:
   m_ObjectHideFlags: 0

@@ -207,12 +207,14 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("Hit Biscuit");
             Destroy(other.gameObject);
             playerHealth.AddHealth(1);
+            soundManager.PlayPlayerPickupSFX();
         }
 
         // Enemy
         if (other.gameObject.CompareTag("Enemy"))
         {
             //Destroy(other.gameObject);
+            //soundManager.PlayPlayerDamagedSFX();
             TakeDamage(1);
         }
     }
@@ -229,6 +231,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //soundManager.PlayPlayerDamagedSFX();
         playerHealth.TakeDamage(damage);
     }
 }
