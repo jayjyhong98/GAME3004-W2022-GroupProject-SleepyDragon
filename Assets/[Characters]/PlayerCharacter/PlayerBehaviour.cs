@@ -122,6 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Receive Input Actions, these functions are called when the PlayerInput component makes a corrisponding broadcast
     public void OnMove(InputValue value)
     {
+        Debug.Log("hello?");
         moveVector = value.Get<Vector2>();
         
         // Update movement animation
@@ -138,12 +139,6 @@ public class PlayerBehaviour : MonoBehaviour
             soundManager.StopPlayerRunGrassSFX();
         }
     }
-
-    //public void OnLook(InputValue value)
-    //{
-    //    lookVector = value.Get<Vector2>();
-    //    //Debug.Log(lookVector);
-    //}
 
     public void OnJump(InputValue value)
     {
