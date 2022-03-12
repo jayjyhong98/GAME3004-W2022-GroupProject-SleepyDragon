@@ -36,6 +36,10 @@ public class PlayerBehaviour : MonoBehaviour
     private Transform Target = null;
     private Vector3 TargetPrevPos = Vector3.zero;
 
+    //Player Attack
+    [SerializeField]
+    private SwordAttack sword;
+
     // Player Input References
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
@@ -48,9 +52,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     //public Transform player;
     public Vector3 OriginScale;
-
-    //[Header("CheckPoint")]
-    //public Vector3 StartPos;
 
     //Sound Manager
     [SerializeField]
@@ -74,14 +75,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        // PLAYER CAMERA STUFF -----------------------------------------------------------------------------
-        cameraControlPoint.transform.position = transform.position;
-        // Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
-        cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
-        var angle = cameraControlPoint.transform.localEulerAngles;
-        angle.z = 0;
-        cameraControlPoint.transform.localEulerAngles = angle;
+        //// PLAYER CAMERA STUFF -----------------------------------------------------------------------------
+        //cameraControlPoint.transform.position = transform.position;
+        //// Rotate the camera based on Vector2 values received from PlayerActionMap [[[[[[[[  WiP CAMERA MOVEMENT, CURRENTLY NOT IN USE  ]]]]]]]]]]]]
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.x * cameraRotationSensitivity * Time.deltaTime, Vector3.up);
+        //cameraControlPoint.transform.rotation *= Quaternion.AngleAxis(lookVector.y * cameraRotationSensitivity * Time.deltaTime, Vector3.left);
+        //var angle = cameraControlPoint.transform.localEulerAngles;
+        //angle.z = 0;
+        //cameraControlPoint.transform.localEulerAngles = angle;
 
 
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
@@ -181,6 +182,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnSwordAttack(InputValue value)
     {
         animator.SetTrigger(SwordAttackHash);
+
+        sword.Attack();
 
         //Play SFX for attacking
         soundManager.PlayPlayerAttackSFX();
