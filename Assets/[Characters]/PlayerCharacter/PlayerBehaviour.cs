@@ -1,7 +1,7 @@
 //*********************************************************************************************************
-// Author: Pauleen Lam, Jeongyeon Jane Hong
+// Author: Pauleen Lam, Jeongyeon Jane Hong, Mariam Ogunlesi
 //
-// Last Modified: February 5, 2022
+// Last Modified: March 12, 2022
 //  
 // Description: This script is used to implement Player.
 //
@@ -18,6 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
     private float movementSpeed = 8;
     [SerializeField]
     private float jumpForce = 7;
+    [SerializeField]
+    private float DoublejumpForce = 14;
+
     //[SerializeField]
     private float cameraRotationSensitivity = 30;
     //private float playerRotationSpeed = 10;
@@ -153,6 +156,21 @@ public class PlayerBehaviour : MonoBehaviour
         // Set jump velocity
         //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
         GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
+
+        //Play Jump SFX
+        soundManager.PlayPlayerJumpSFX();
+
+        // TODO ADD JUMP ANIMATION
+    }
+
+    public void OnDoubleJump(InputValue value)
+    {
+        if (!isGrounded) return; // Restrict  to single jump
+
+        Debug.Log("DoubleJump");
+        // Set jump velocity
+        //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+        GetComponent<Rigidbody>().AddForce(Vector3.up * DoublejumpForce);
 
         //Play Jump SFX
         soundManager.PlayPlayerJumpSFX();

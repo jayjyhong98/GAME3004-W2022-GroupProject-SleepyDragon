@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3320506}
   - component: {fileID: 2320506}
   - component: {fileID: 4439361016891151427}
+  - component: {fileID: 9217308904812897885}
   m_Layer: 7
   m_Name: Grass
   m_TagString: Ground
@@ -127,10 +128,24 @@ BoxCollider:
   m_GameObject: {fileID: 120506}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 56.21765, y: 29.520792, z: 38.74641}
   m_Center: {x: -0.00003433227, y: 13.537451, z: 0.00023555756}
+--- !u!64 &9217308904812897885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: a677dd29f5e3e5c47a30eb9dc6574030, type: 3}
 --- !u!1 &120508
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +158,7 @@ GameObject:
   - component: {fileID: 3320508}
   - component: {fileID: 2320508}
   - component: {fileID: 1795915606619029448}
+  - component: {fileID: 1813851846263100161}
   m_Layer: 7
   m_Name: GroundIsland
   m_TagString: Ground
@@ -224,10 +240,24 @@ BoxCollider:
   m_GameObject: {fileID: 120508}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 70.72752, y: 83.567375, z: 63.568077}
   m_Center: {x: 0, y: 0.0000038146973, z: 0.00024414062}
+--- !u!64 &1813851846263100161
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a677dd29f5e3e5c47a30eb9dc6574030, type: 3}
 --- !u!1 &120510
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +270,7 @@ GameObject:
   - component: {fileID: 3320510}
   - component: {fileID: 2320510}
   - component: {fileID: 4636910664783050858}
+  - component: {fileID: 8635673690270817247}
   m_Layer: 7
   m_Name: PalmTree
   m_TagString: Ground
@@ -321,7 +352,21 @@ BoxCollider:
   m_GameObject: {fileID: 120510}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 114.288124, y: 108.123535, z: 106.12938}
   m_Center: {x: 5.9153323, y: 49.242554, z: -6.2925367}
+--- !u!64 &8635673690270817247
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: a677dd29f5e3e5c47a30eb9dc6574030, type: 3}
