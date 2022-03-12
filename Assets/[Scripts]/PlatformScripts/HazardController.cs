@@ -128,7 +128,7 @@ public class HazardController : MonoBehaviour
         switch (type)
         {
             case HazardType.AXE:
-                soundManager.PlaySwingAxeSFX();
+                //soundManager.PlaySwingAxeSFX();
                 break;
             case HazardType.GRINDER:
                 soundManager.PlayRollingGrinderLoopSFX();
