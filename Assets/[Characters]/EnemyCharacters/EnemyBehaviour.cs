@@ -121,7 +121,7 @@ public class EnemyBehaviour : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            transform.position = new Vector3(-0,-100, 0);
+            Destroy(gameObject);
         }
     }
 
