@@ -61,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
     {
         soundManager.PlayPlayerHealSFX();
 
+        //currentHealth += _amount;
+
         //add amount of health from inventory screen when seed button is pressed
         if (currentHealth < maxhealth)
         {  //check if health is under max health

@@ -263,8 +263,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.486664, y: 3.3787322, z: 0.2148835}
-  m_Center: {x: 0.012384218, y: -1.6893399, z: -0.0005469471}
+  m_Size: {x: 0.486664, y: 3.3787322, z: 0.6429442}
+  m_Center: {x: 0.012374055, y: -1.6893386, z: -0.020225594}
 --- !u!114 &896852257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnController: {fileID: 0}
-  type: 3
+  type: 1
   damage: 10
   soundManager: {fileID: 0}
 --- !u!1 &7641293651057028990

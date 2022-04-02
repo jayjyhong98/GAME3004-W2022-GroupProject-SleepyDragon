@@ -13,6 +13,9 @@ using UnityEngine;
 public enum MovingPlatformDirection
 {
     HORIZONTAL,
+    HORIZONTAL2,
+    HORIZONTAL3,
+    HORIZONTAL4,
     VERTICAL,
     DIAGONAL_UP,
     DIAGONAL_DOWN,

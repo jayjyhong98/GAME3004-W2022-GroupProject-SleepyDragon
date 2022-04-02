@@ -46,6 +46,12 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     public SoundManagerScript soundManager;
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +59,8 @@ public class EnemyBehaviour : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
+        agent.enabled = true;
         soundManager = FindObjectOfType<SoundManagerScript>();
     }
 

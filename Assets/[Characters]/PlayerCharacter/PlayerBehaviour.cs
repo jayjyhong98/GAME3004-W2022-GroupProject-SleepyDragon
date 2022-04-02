@@ -217,7 +217,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Hit Biscuit");
             Destroy(other.gameObject);
-            playerHealth.AddHealth(10);
+            RecoveryHealth(10);
         }
     }
 
@@ -234,5 +234,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerHealth.TakeDamage(damage);
+    }
+    public void RecoveryHealth(int health)
+    {
+        playerHealth.AddHealth(health);
     }
 }
