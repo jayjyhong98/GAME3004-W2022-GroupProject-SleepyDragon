@@ -16,7 +16,7 @@ public class MovingPlatform : MonoBehaviour
     public MovingPlatformDirection direction;
     [Range(0.1f, 10.0f)]
     public float speed;
-    [Range(1, 20)]
+    [Range(1, 50)]
     public float distance;
     [Range(0.05f, 0.1f)]
     public float distanceOffset;
@@ -56,14 +56,23 @@ public class MovingPlatform : MonoBehaviour
             case MovingPlatformDirection.HORIZONTAL:
                 transform.position = new Vector3(startingPosition.x + pingPongValue, transform.position.y, transform.position.z);
                 break;
+            case MovingPlatformDirection.HORIZONTAL2:
+                transform.position = new Vector3(startingPosition.x - pingPongValue, transform.position.y, transform.position.z);
+                break;
+            case MovingPlatformDirection.HORIZONTAL3:
+                transform.position = new Vector3(startingPosition.x, transform.position.y, startingPosition.z + pingPongValue);
+                break;
+            case MovingPlatformDirection.HORIZONTAL4:
+                transform.position = new Vector3(startingPosition.x, transform.position.y, startingPosition.z - pingPongValue);
+                break;
             case MovingPlatformDirection.VERTICAL:
                 transform.position = new Vector3(transform.position.x, startingPosition.y + pingPongValue, transform.position.z);
                 break;
             case MovingPlatformDirection.DIAGONAL_UP:
-                transform.position = new Vector3(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue, transform.position.z);
+                transform.position = new Vector3(transform.position.x, startingPosition.y + pingPongValue, startingPosition.z + pingPongValue);
                 break;
             case MovingPlatformDirection.DIAGONAL_DOWN:
-                transform.position = new Vector3(startingPosition.x + pingPongValue, startingPosition.y - pingPongValue, transform.position.z);
+                transform.position = new Vector3(transform.position.x, startingPosition.y - pingPongValue, startingPosition.z + pingPongValue);
                 break;
         }
     }
