@@ -61,6 +61,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         OriginScale = transform.localScale;
+        isGrounded = true;
 
         // Component references
         animator = GetComponent<Animator>();
@@ -73,12 +74,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         // PLAYER MOVEMENT STUFF -----------------------------------------------------------------------------
         // Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundLayerMask);
+        //isGrounded = true;
 
-        if (isGrounded && jumpVelocity.y < 0.0f)
-        {
-            jumpVelocity.y = -2.0f;
-        }
+        //if (isGrounded && jumpVelocity.y < 0.0f)
+        //{
+        //    jumpVelocity.y = -2.0f;
+        //}
 
         // Move the player based on Vector2 values received from PlayerActionMap
         if (!(moveVector.magnitude > 0)) 
@@ -133,9 +135,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!isGrounded) return; // Restrict  to single jump
 
+        //isGrounded = false;
+
         Debug.Log("Jump");
         // Set jump velocity
         //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+        //GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
+
         GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
 
         //Play Jump SFX
@@ -145,21 +151,21 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void OnDoubleJump(InputValue value)
-    {
-        if (!isGrounded) return; // Restrict  to single jump
+    //public void OnDoubleJump(InputValue value)
+    //{
+    //    if (!isGrounded) return; // Restrict  to single jump
 
-        Debug.Log("DoubleJump");
-        // Set jump velocity
-        //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
-        GetComponent<Rigidbody>().AddForce(Vector3.up * DoublejumpForce);
+    //    Debug.Log("DoubleJump");
+    //    // Set jump velocity
+    //    //jumpVelocity.y = Mathf.Sqrt(jumpForce * -2.0f * Physics.gravity.y);
+    //    GetComponent<Rigidbody>().AddForce(Vector3.up * DoublejumpForce);
 
-        //Play Jump SFX
-        if (soundManager)
-        {
-            soundManager.PlayPlayerJumpSFX();
-        }
-    }
+    //    //Play Jump SFX
+    //    if (soundManager)
+    //    {
+    //        soundManager.PlayPlayerJumpSFX();
+    //    }
+    //}
 
     public void OnSwordAttack(InputValue value)
     {
@@ -198,7 +204,14 @@ public class PlayerBehaviour : MonoBehaviour
             //Target = collision.transform;
             //TargetPrevPos = Target.position;
             transform.SetParent(collision.transform);
+            isGrounded = true;
 
+        }
+
+        // The player is no longer afftected by platform's transform.
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
         }
     }
 
@@ -228,6 +241,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Target = null;
             transform.SetParent(null);
+            isGrounded = true;
+        }
+
+        // The player is no longer afftected by platform's transform.
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
         }
     }
 
