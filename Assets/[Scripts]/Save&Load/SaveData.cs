@@ -36,6 +36,8 @@ public class SaveData
     //public int checkpoint;
     public int levelsUnlocked;
 
+    public float[] position;
+
     public SaveData()
     {
         //These are default values that SHOULD be replaced upon instantiation
