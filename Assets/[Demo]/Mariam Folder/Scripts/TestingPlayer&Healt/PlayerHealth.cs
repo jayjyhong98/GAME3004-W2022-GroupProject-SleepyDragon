@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
         if ((currentHealth - damage) < 0)
         {
             currentHealth = 0;
+            SceneManager.LoadScene("GameOverScene");
+
         }
         else
         {
@@ -86,6 +89,7 @@ public class PlayerHealth : MonoBehaviour
         else if (_amount < 0)
         {
             currentHealth = 0;
+
         }
         else
         {
