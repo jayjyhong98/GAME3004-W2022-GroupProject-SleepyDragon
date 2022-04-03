@@ -213,6 +213,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(5);
+        }
     }
 
     // Check Trigger
