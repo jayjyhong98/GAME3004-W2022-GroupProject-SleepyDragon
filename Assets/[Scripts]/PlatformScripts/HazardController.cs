@@ -117,8 +117,9 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.ENEMY)
             {
                 Debug.Log("Enemy touch!");
-                soundManager.PlayPlayerDamagedSFX();
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+                soundManager.PlayPlayerDamagedSFX();
+                
             }
         }
     }
