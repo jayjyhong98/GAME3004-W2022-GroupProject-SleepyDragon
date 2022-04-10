@@ -98,6 +98,15 @@ public class HazardController : MonoBehaviour
                 soundManager.PlayLavaPitDamageSFX();
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
+
+            // Enemies damage
+            if (type == HazardType.ENEMY)
+            {
+                Debug.Log("Enemy touch!");
+                other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+                soundManager.PlayPlayerDamagedSFX();
+
+            }
         }
     }
 
@@ -117,8 +126,9 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.ENEMY)
             {
                 Debug.Log("Enemy touch!");
-                soundManager.PlayPlayerDamagedSFX();
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+                soundManager.PlayPlayerDamagedSFX();
+                
             }
         }
     }
