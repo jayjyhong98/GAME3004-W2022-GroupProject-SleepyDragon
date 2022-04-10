@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Simulator
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 328
     height: 636
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: SimulatorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -272,13 +272,13 @@ MonoBehaviour:
     height: 636
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 19}
   - {fileID: 15}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -728,22 +728,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/[Prefabs]/Pickups
+    - Assets/[Scenes]
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/[Prefabs]/Pickups
+  - Assets/[Scenes]
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity\GAME3004-W2022-GroupProject-SleepyDragon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: f4860000
-    m_LastClickedID: 34548
-    m_ExpandedIDs: 000000006467000066670000686700006a6700006c6700006e67000070670000726700007467000076670000786700007a6700007c670000886700008e67000000ca9a3b
+    scrollPos: {x: 0, y: 210}
+    m_SelectedIDs: f0670000
+    m_LastClickedID: 26608
+    m_ExpandedIDs: 000000009e670000a0670000a2670000a4670000a6670000a8670000aa670000ac670000ae670000b0670000b2670000b4670000b6670000b8670000ba67000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -771,7 +771,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006467000066670000686700006a6700006c6700006e67000070670000726700007467000076670000786700007a6700007c670000
+    m_ExpandedIDs: 000000009e670000a0670000a2670000a4670000a6670000a8670000aa670000ac670000ae670000b0670000b2670000b4670000b6670000b8670000ba670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -901,20 +901,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d682feffec83feffa684feff1885feff7487fefff887feffe288fefffa89feff
-      m_LastClickedID: -95750
-      m_ExpandedIDs: b0c1ffffb0e6ffffe0e6fffffae6ffff52e9ffffeeebffff50edffffd6f8ffffaef9ffffdafaffffa898000072990000489d0000449f0000929f000056a000003ea1000040a50000e8a70000
+      m_SelectedIDs: 20a20000
+      m_LastClickedID: 41504
+      m_ExpandedIDs: a6f9ffffd4faffff7e9d000020a2000058a30000a4a40000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Env_Type3_Tree_2 (45)
-        m_OriginalName: Env_Type3_Tree_2 (45)
+        m_Name: Fill
+        m_OriginalName: Fill
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -15270
+        m_UserData: 43262
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -1153,9 +1153,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 68.927155, y: -4.6405945, z: 589.98846}
+    m_Target: {x: 542.88416, y: 1379.7772, z: 1.547821}
     speed: 2
-    m_Value: {x: 68.927155, y: -4.6405945, z: 589.98846}
+    m_Value: {x: 542.88416, y: 1379.7772, z: 1.547821}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1202,13 +1202,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.37960267, y: 0.33741695, z: -0.15004915, w: 0.8486584}
+    m_Target: {x: 0.03182243, y: 0.016614014, z: 0.0002288828, w: 0.9996982}
     speed: 2
-    m_Value: {x: 0.37924743, y: 0.33857372, z: -0.15056688, w: 0.84786123}
+    m_Value: {x: 0.03181153, y: 0.016608324, z: 0.0002288044, w: 0.99935585}
   m_Size:
-    m_Target: 84.25301
+    m_Target: 308.19373
     speed: 2
-    m_Value: 80.62489
+    m_Value: 308.19373
   m_Ortho:
     m_Target: 0
     speed: 2
