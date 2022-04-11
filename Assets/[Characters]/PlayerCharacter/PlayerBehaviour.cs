@@ -41,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     public Vector2 lookVector = Vector2.zero;
 
+
     // Components
     Animator animator = null;
     PlayerHealth playerHealth;
@@ -92,6 +93,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.LookAt(moveDirection + transform.position);
         }
+
+
 
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
 
@@ -187,6 +190,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         lookVector = value.Get<Vector2>();
     }
+
+    
 
     void OnDrawGizmos()
     {
