@@ -129,6 +129,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            ScoreCounter.scoreAmount = ScoreCounter.scoreAmount + 50;
+
         }
     }
 
