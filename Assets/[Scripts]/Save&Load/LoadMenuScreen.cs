@@ -29,7 +29,7 @@ public class LoadMenuScreen : MonoBehaviour
     [Header("Name")]
     [SerializeField] private string savefileName = "Pawggers";       //Pawggers is the name of the save file. An indexing number will be appended to this name. This is different from the save file header seen in-game.
     private string[] saveFileDisplayHeaders;                            //This game will have a maximum 4 or more save slots .
-    private string gameVersion = "0.1";
+    private string gameVersion = "0.4";
 
     private void Start()
     {

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -191,7 +192,20 @@ public class PlayerBehaviour : MonoBehaviour
         lookVector = value.Get<Vector2>();
     }
 
-    
+    ////save load 
+    //void OnSaveBack()
+    //{
+    //    // playet position and rotation
+    //    string posData = "";
+    //    string rotData = "";
+    //    posData = transform.position.x + "," + transform.position.y + "," + transform.position.z;
+    //    rotData = transform.eulerAngles.x + "," + transform.eulerAngles.y + "," + transform.eulerAngles.z;
+
+    //    PlayerPrefs.SetString("PlayerPos", posData);
+    //    PlayerPrefs.SetString("PlayerRot", rotData);
+
+    //    // inventory
+    //}
 
     void OnDrawGizmos()
     {
