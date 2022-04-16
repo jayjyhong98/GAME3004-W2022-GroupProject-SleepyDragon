@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
     Vector2 moveVector = Vector2.zero;
     Vector3 moveDirection = Vector3.zero;
     public Vector2 lookVector = Vector2.zero;
+
 
     // Components
     Animator animator = null;
@@ -92,6 +94,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.LookAt(moveDirection + transform.position);
         }
+
+
 
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
 
@@ -187,6 +191,21 @@ public class PlayerBehaviour : MonoBehaviour
     {
         lookVector = value.Get<Vector2>();
     }
+
+    ////save load 
+    //void OnSaveBack()
+    //{
+    //    // playet position and rotation
+    //    string posData = "";
+    //    string rotData = "";
+    //    posData = transform.position.x + "," + transform.position.y + "," + transform.position.z;
+    //    rotData = transform.eulerAngles.x + "," + transform.eulerAngles.y + "," + transform.eulerAngles.z;
+
+    //    PlayerPrefs.SetString("PlayerPos", posData);
+    //    PlayerPrefs.SetString("PlayerRot", rotData);
+
+    //    // inventory
+    //}
 
     void OnDrawGizmos()
     {
