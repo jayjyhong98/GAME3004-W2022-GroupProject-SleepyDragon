@@ -48,6 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     //public Transform player;
     public Vector3 OriginScale;
+    public GameObject forwardPointer;
 
     //Sound Manager
     [SerializeField]
@@ -86,7 +87,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!(moveVector.magnitude > 0)) 
             moveDirection = Vector3.zero;
 
-        moveDirection = Camera.main.transform.forward * moveVector.y + Camera.main.transform.right * moveVector.x;
+        moveDirection = /*Camera.main.transform.forward*/ forwardPointer.transform.forward * moveVector.y + Camera.main.transform.right * moveVector.x;
 
         if (moveVector != Vector2.zero)
         {
@@ -195,7 +196,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     // Check Collision
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         // The player can get onto the platform
         if (collision.gameObject.CompareTag("Platform"))
@@ -213,6 +214,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             isGrounded = true;
         }
+
+
     }
 
     // Check Trigger
