@@ -1,7 +1,7 @@
 //*********************************************************************************************************
-// Author: Jeongyeon Jane Hong
+// Author: Jeongyeon Jane Hong, Mariam Ogunlesi
 //
-// Last Modified: February 5, 2022
+// Last Modified: April 15, 2022
 //  
 // Description: This script is used to implement Spawn Function.
 //
@@ -12,16 +12,56 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    [Header("Player")]
-    public Transform player;
-    public Transform currentSpawnPoint;
+    //Note: Used Vector3 instead of GameObject because it is easier to save/load from savefile
+    [HideInInspector] public Vector3 currentSpawnPoint;
+    [HideInInspector] public Vector3 currentSpawnPointRotation;
+    [HideInInspector] public Vector3 oldSpawnPoint;
 
-    void Start()
+    [SerializeField] Transform cameraTransform;
+
+    private void Awake()
     {
-        player.position = currentSpawnPoint.position;
+        currentSpawnPoint = this.transform.position;
+        currentSpawnPointRotation = this.transform.localEulerAngles;
+        oldSpawnPoint = currentSpawnPoint;
     }
-    public void SetCurrentSpawnPoint(Transform newSpawnPoint)
+
+    private void OnTriggerEnter(Collider other)
     {
-        currentSpawnPoint = newSpawnPoint;
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            //transform.position = currentSpawnPoint.transform.position;
+            //transform.rotation = currentSpawnPoint.transform.rotation;
+            transform.position = currentSpawnPoint;
+            transform.eulerAngles = currentSpawnPointRotation;
+
+            cameraTransform.transform.rotation = this.transform.rotation;
+        }
+
+        if (other.gameObject.CompareTag("Spawn"))
+        {
+            oldSpawnPoint = currentSpawnPoint;
+            currentSpawnPoint = other.transform.position;
+            currentSpawnPointRotation = other.transform.eulerAngles;
+            //currentSpawnPoint = other.gameObject;
+            //oldSpawnPoint = null;
+        }
     }
+    //[Header("Player")]
+    //public Transform player;
+    //public Transform currentSpawnPoint;
+    //[HideInInspector] public Vector3 newSpawnPoint;
+    //[HideInInspector] public Vector3 newSpawnPointRotation;
+
+    //void Start()
+    //{
+    //    player.position = currentSpawnPoint.position;
+    //    newSpawnPointRotation = this.transform.localEulerAngles;
+
+    //}
+    //public void SetCurrentSpawnPoint(Transform newSpawnPoint)
+    //{
+    //    currentSpawnPoint = newSpawnPoint;
+
+    //}
 }

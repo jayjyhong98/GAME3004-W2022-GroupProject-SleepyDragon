@@ -18,7 +18,8 @@ TagManager:
   - Axe
   - Grinder
   - CameraController
-  - NoCollision
+  - Hazard
+  - Spawn
   layers:
   - Default
   - TransparentFX

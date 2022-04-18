@@ -54,7 +54,8 @@ public class MinimapScreen : MonoBehaviour
     //The visual marker of how a checkpoint will appear on the minimap.
     [SerializeField] private Sprite checkpointMinimapMarkerSprite;
 
-    
+    [SerializeField] private GameObject miniMap;
+
 
     [Header("Minimap Settings")]
     [SerializeField] private float camFollowSpeed = 10;             //How fast the minimap camera will follow the player. 
@@ -92,6 +93,11 @@ public class MinimapScreen : MonoBehaviour
             //Creates new Minimap icon for the new player character.
             AddMinimapMarker(targetPlayer, MinimapMarker.PLAYER);
         }
+    }
+
+    public void OnMapButton_Pressed()
+    {
+        miniMap.SetActive(!miniMap.activeInHierarchy);
     }
 
     //Insures that this object is within Canvas.
@@ -422,11 +428,11 @@ public class MinimapScreen : MonoBehaviour
 
         if (minimapMask.activeSelf)
         {
-            minimapMask.SetActive(false); //Turn off Minimap visual 
+            minimapMask.SetActive(true); //Turn off Minimap visual 
         }
         else
         {
-            minimapMask.SetActive(true);  //Turn on Minimap visual
+            minimapMask.SetActive(false);  //Turn on Minimap visual
         }
     }
 
@@ -519,4 +525,6 @@ public class MinimapScreen : MonoBehaviour
 
         //TODO adjust other icons here
     }
+
+   
 }

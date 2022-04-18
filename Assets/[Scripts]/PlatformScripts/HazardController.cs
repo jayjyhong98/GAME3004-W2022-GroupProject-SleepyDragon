@@ -56,7 +56,7 @@ public class HazardController : MonoBehaviour
             {
                 Debug.Log("Fell into pit (water/lava)");
                 soundManager.PlayLavaPitDamageSFX();
-                other.transform.position = spawnController.currentSpawnPoint.position;
+                //other.transform.position = spawnController.currentSpawnPoint.position;
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
 
@@ -98,6 +98,15 @@ public class HazardController : MonoBehaviour
                 soundManager.PlayLavaPitDamageSFX();
                 other.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
+
+            // Enemies damage
+            if (type == HazardType.ENEMY)
+            {
+                Debug.Log("Enemy touch!");
+                other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+                soundManager.PlayPlayerDamagedSFX();
+
+            }
         }
     }
 
@@ -109,7 +118,7 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.DEATHPLANE)
             {
                 Debug.Log("Hit Death Plane");
-                other.transform.position = spawnController.currentSpawnPoint.position;
+                //other.transform.position = spawnController.currentSpawnPoint.position;
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
             }
 
@@ -117,8 +126,9 @@ public class HazardController : MonoBehaviour
             if (type == HazardType.ENEMY)
             {
                 Debug.Log("Enemy touch!");
-                soundManager.PlayPlayerDamagedSFX();
                 other.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+                soundManager.PlayPlayerDamagedSFX();
+                
             }
         }
     }
