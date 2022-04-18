@@ -234,6 +234,10 @@ public class PlayerBehaviour : MonoBehaviour
             isGrounded = true;
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(5);
