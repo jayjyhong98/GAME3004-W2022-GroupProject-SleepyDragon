@@ -125,7 +125,7 @@ public class LoadMenuScreen : MonoBehaviour
                 //Don't load anything, but stats are loaded anyway because they're on LoadedSaveFile.loadedSaveData
                 break;
             case 1:
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(0);
                 break;
             default:
                 //Don't load anything, but stats are loaded anyway because they're on LoadedSaveFile.loadedSaveData
