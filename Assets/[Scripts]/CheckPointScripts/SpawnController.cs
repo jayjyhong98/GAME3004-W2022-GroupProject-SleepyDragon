@@ -19,11 +19,24 @@ public class SpawnController : MonoBehaviour
 
     [SerializeField] Transform cameraTransform;
 
+    [SerializeField]
+    private int damage = 1;
+
+    //Sound Manager
+    [SerializeField]
+    public SoundManagerScript soundManager;
+
     private void Awake()
     {
         currentSpawnPoint = this.transform.position;
         currentSpawnPointRotation = this.transform.localEulerAngles;
         oldSpawnPoint = currentSpawnPoint;
+    }
+
+    void Start()
+    {
+        soundManager = FindObjectOfType<SoundManagerScript>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +49,10 @@ public class SpawnController : MonoBehaviour
             transform.eulerAngles = currentSpawnPointRotation;
 
             cameraTransform.transform.rotation = this.transform.rotation;
+
+            gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
+            soundManager.PlayPlayerDamagedSFX();
+
         }
 
         if (other.gameObject.CompareTag("Spawn"))
