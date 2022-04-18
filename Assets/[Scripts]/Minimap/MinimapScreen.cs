@@ -136,21 +136,21 @@ public class MinimapScreen : MonoBehaviour
                 canvasFound = true;
             }
         }
-        else if (GameObject.Find("HUD (Desktop)"))
+        else if (GameObject.Find("HUD"))
         {
-            if (GameObject.Find("HUD (Desktop)").GetComponent<Canvas>())
+            if (GameObject.Find("HUD").GetComponent<Canvas>())
             {
-                canvasContainer = GameObject.Find("HUD (Desktop)");
+                canvasContainer = GameObject.Find("HUD");
                 this.transform.SetParent(canvasContainer.transform);
                 this.transform.SetSiblingIndex(0);
                 canvasFound = true;
             }
         }
-        else if (GameObject.Find("HUD (Mobile)"))
+        else if (GameObject.Find("HUD"))
         {
-            if (GameObject.Find("HUD (Mobile)").GetComponent<Canvas>())
+            if (GameObject.Find("HUD").GetComponent<Canvas>())
             {
-                canvasContainer = GameObject.Find("HUD (Mobile)");
+                canvasContainer = GameObject.Find("HUD");
                 this.transform.SetParent(canvasContainer.transform);
                 this.transform.SetSiblingIndex(0);
                 canvasFound = true;
