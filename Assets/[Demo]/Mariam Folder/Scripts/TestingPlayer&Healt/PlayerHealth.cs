@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        if ((currentHealth - damage) < 0)
+        if ((currentHealth - damage) <= 0)
         {
             currentHealth = 0;
             SceneManager.LoadScene("GameOverScene");
